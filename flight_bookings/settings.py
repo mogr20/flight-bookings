@@ -25,7 +25,10 @@ SECRET_KEY = 'django-insecure-gsetwkf2&_yl7!@u3xmonj(pa%g*b-h%aauyltv)_+o5!zd=gk
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'https://*.herokuapp.com',
+    '127.0.0.1',
+]
 
 
 # Application definition
@@ -37,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'booking',
 ]
 
 MIDDLEWARE = [
