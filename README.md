@@ -5,7 +5,7 @@ A flight bookings web app using Django and PostgreSQL
 
 ## Product Goals
 
-## Table of Contents
+## Contents
 
 1. [Flight Bookings](#flight-bookings)
   - 
@@ -39,15 +39,23 @@ A flight bookings web app using Django and PostgreSQL
 
 ## User Stories
 
+[Back to Contents](#Contents)
+
 ## Design Inspiration
+
+[Back to Contents](#Contents)
 
 ### Colour Scheme
 
 ```white```  ```rgba(0, 0, 0, 0.518)```
 
+[Back to Contents](#Contents)
+
 ### Font
 
 ## Wireframes
+
+[Back to Contents](#Contents)
 
 ## Deployed App Screenshots
 
@@ -63,29 +71,47 @@ A flight bookings web app using Django and PostgreSQL
     <img src="">  
 </details>
 
+[Back to Contents](#Contents)
+
 # Features 
 
 ## Present Features
 
 ## Future Development
 
+[Back to Contents](#Contents)
+
 # Database Schema - Entity Relationship Diagram
+
+[Back to Contents](#Contents)
 
 # Agile Methodologies - Project Management
 
 ## MoSCoW Prioritization
 
+[Back to Contents](#Contents)
+
 # Deployment
 
 ## Cloning from GitHub
 
+[Back to Contents](#Contents)
+
 ## Django Project Setup
+
+[Back to Contents](#Contents)
 
 ## Cloudinary API 
 
+[Back to Contents](#Contents)
+
 ## Heroku deployment
 
+[Back to Contents](#Contents)
+
 # Technologies Used
+
+[Back to Contents](#Contents)
 
 # Testing 
 ## Validator Testing 
@@ -101,9 +127,15 @@ A flight bookings web app using Django and PostgreSQL
 ### LightHouse
 
 ### Wave Accessibility Evaluation
-  
+
+[Back to Contents](#Contents)
+
 ## Feature Testing
+
+[Back to Contents](#Contents)
 
 # Credits 
 
 ## Content 
+
+[Back to Contents](#Contents)
