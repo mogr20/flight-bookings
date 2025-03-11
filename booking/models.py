@@ -15,8 +15,11 @@ class Passenger(models.Model):
     )
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    dietary_requirements = models.TextField()
-    baggage_weight = models.FloatField(default=0.0)
+    dietary_requirements = models.TextField(default="", blank=True)
+    baggage_weight = models.FloatField(default=0.0, null=True)
+    
+    def __str__(self):
+        return f"{self.last_name}, {self.first_name} - {self.booking_id.user_id.email}"
     
     
 class Airport(models.Model):
@@ -24,25 +27,36 @@ class Airport(models.Model):
     airport_name = models.CharField(max_length=100)
     city = models.CharField(max_length=100)
     country = models.CharField(max_length=55)
-    timezone = models.CharField(max_length=50)
+    timezone = models.CharField(max_length=50, blank=True)
+    
+    def __str__(self):
+        return f"{self.airport_code} - ({self.city}, {self.airport_name})"
     
     
 class Flight(models.Model):
     flight_number = models.CharField(max_length=20)
     airline = models.CharField(max_length=50)
     scheduled_time = models.DateTimeField()
-    flight_num_and_time = models.CharField(max_length=254, unique=True)
-    expected_time = models.DateTimeField()
+    expected_time = models.DateTimeField(blank=True, null=True)
+    arrival_scheduled_time = models.DateTimeField()
+    arrival_expected_time = models.DateTimeField(blank=True, null=True)
     is_departure = models.BooleanField(default=True)
-    status = models.CharField(max_length=50)
-    terminal = models.CharField(max_length=20)
-    gate = models.CharField(max_length=20)
+    status = models.CharField(max_length=50, blank=True)
+    terminal = models.CharField(max_length=20, blank=True)
+    gate = models.CharField(max_length=20, blank=True)
     arrival_airport = models.ForeignKey(
-        Airport, on_delete=models.RESTRICT, default=None, related_name='arrival_airport'
+        Airport, on_delete=models.SET_NULL, null=True, related_name='arrival_airport'
     )
     departure_airport = models.ForeignKey(
-        Airport, on_delete=models.RESTRICT, default=None, related_name='departure_airport'
+        Airport, on_delete=models.SET_NULL, null=True, related_name='departure_airport'
     )
+    
+    def __str__(self):
+        return f"{self.flight_num_and_time}"
+    
+    @property
+    def flight_num_and_time(self):
+        return f"{self.flight_number} - {self.scheduled_time.strftime('%Y-%m-%dT%H:%M:%S')}"
     
     
 class Seat(models.Model):
@@ -51,6 +65,9 @@ class Seat(models.Model):
         Flight, on_delete=models.CASCADE
     )
     is_taken = models.BooleanField(default=False)
+    
+    def __str__(self):
+        return f"{self.seat_number} - {self.flight_id.flight_num_and_time}"
 
 
 class Flight_Seat(models.Model):
@@ -69,4 +86,4 @@ class Journey(models.Model):
     flight_id = models.ForeignKey(
         Flight, on_delete=models.CASCADE
     )
-    layover_duration = models.TimeField(default=None)
+    layover_duration = models.TimeField(default=None, blank=True, null=True)
