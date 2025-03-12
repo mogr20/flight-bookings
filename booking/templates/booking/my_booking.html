@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!-- content starts here -->
+
+<div class="container-fluid">
+    <div class="row">
+        {% if user.is_authenticated %}
+        {% for booking in booking_list %}
+        <h3>Booking for: {{ booking.booking_date }}</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Departing from</th>
+                    <th>Arriving at</th>
+                    <th>Airline</th>
+                    <th>Flight Number</th>
+                    <th>Departure Time</th>
+                    <th>Arrival Time</th>
+                    <th>Status</th>>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for flight in flight_list %}
+                <tr>
+                    <td>{{ flight.departure_airport.city }}</td>
+                    <td>{{ flight.arrival_airport.city }}</td>
+                    <td>{{ flight.airline }}</td>
+                    <td>{{ flight.flight_number }}</td>
+                    <!-- We will be displaying the expected departure time rather than the scheduled time, so the user
+                 can immediately see when they need to get to the gate and when to expect take off. -->
+                    <td>{{ flight.expected_time|time:"H:i" }}</td>
+                    <!-- Same as previously, except now its the expected arrival time -->
+                    <td>{{ flight.arrival_expected_time|time:"H:i" }}</td>
+                    <td>{{ flight.status }}</td>
+                    <td>Change Flight (button), Delete Flight from Booking (button)</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endfor %}
+        {% else %}
+        <p>Error: Couldn't access your bookings.</p>
+        {% endif %}
+    </div>
+
+</div>
+
+<!-- end of index.html -->
+{% endblock %}
