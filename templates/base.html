@@ -1,5 +1,7 @@
 {% load static %}
 
+{% url 'home' as home_url %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,9 +24,16 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
-<body>
-    <h1>Hello from Django!</h1>
+<body class="d-flex flex-column">
+    <!-- <h1 class="">Hello from Django!</h1> -->
 
+    <main class="flex-shrink-0">
+
+        {% block content %}
+        <!-- Content is inserted here -->
+        {% endblock content %}
+
+    </main>
 
 
     <!-- Bootstrap JS -->

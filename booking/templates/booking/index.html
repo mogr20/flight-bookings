@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!-- content starts here -->
+
+<div class="container-fluid">
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Destination</th>
+                    <th>Airline</th>
+                    <th>Flight Number</th>
+                    <!-- We will be displaying the expected time rather than the scheduled time, so the user
+                 can immediately see when they need to get to the gate and when to expect take off. -->
+                    <th>Departure Time</th>
+                    <th>Status</th>>
+                </tr>
+            </thead>
+            <tbody>
+                {% for flight in flight_list %}
+                <tr>
+                    <td>{{ flight.arrival_airport.city }}</td>
+                    <td>{{ flight.airline }}</td>
+                    <td>{{ flight.flight_number }}</td>
+                    <td>{{ flight.expected_time|time:"H:i" }}</td>
+                    <td>{{ flight.status }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+<!-- end of index.html -->
+{% endblock %}
