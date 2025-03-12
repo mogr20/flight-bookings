@@ -8,25 +8,40 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Destination</th>
+                    <th>Departing from</th>
+                    <th>Arriving at</th>
                     <th>Airline</th>
                     <th>Flight Number</th>
-                    <!-- We will be displaying the expected time rather than the scheduled time, so the user
-                 can immediately see when they need to get to the gate and when to expect take off. -->
                     <th>Departure Time</th>
+                    <th>Arrival Time</th>
                     <th>Status</th>>
                 </tr>
             </thead>
             <tbody>
                 <tr>
+                    <td>{{ flight.departure_airport.city }}</td>
                     <td>{{ flight.arrival_airport.city }}</td>
                     <td>{{ flight.airline }}</td>
                     <td>{{ flight.flight_number }}</td>
+                    <!-- We will be displaying the expected departure time rather than the scheduled time, so the user
+                 can immediately see when they need to get to the gate and when to expect take off. -->
                     <td>{{ flight.expected_time|time:"H:i" }}</td>
+                    <!-- Same as previously, except now its the expected arrival time -->
+                    <td>{{ flight.arrival_expected_time|time:"H:i" }}</td>
                     <td>{{ flight.status }}</td>
                 </tr>
             </tbody>
         </table>
+        <div>
+            {% if user.is_authenticated %}
+            <form id="bookingForm" method="post">
+                {% csrf_token %}
+                <button id="submitButton" type="submit" class="btn btn-primary">Book this Flight</button>
+            </form>
+            {% else %}
+            <p>Log in to book this flight</p>
+            {% endif %}
+        </div>
     </div>
 
 </div>
