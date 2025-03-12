@@ -7,8 +7,8 @@ class Booking(models.Model):
     user_id = models.ForeignKey(
         User, on_delete=models.CASCADE
     )
-    
-    
+
+
 class Passenger(models.Model):
     booking_id = models.ForeignKey(
         Booking, on_delete=models.CASCADE
@@ -17,22 +17,23 @@ class Passenger(models.Model):
     last_name = models.CharField(max_length=50)
     dietary_requirements = models.TextField(default="", blank=True)
     baggage_weight = models.FloatField(default=0.0, null=True)
-    
+
     def __str__(self):
-        return f"{self.last_name}, {self.first_name} - {self.booking_id.user_id.email}"
-    
-    
+        return f"{self.last_name}, {self.first_name}"
+    #- {self.booking_id.user_id.email}"
+
+
 class Airport(models.Model):
     airport_code = models.CharField(max_length=20, unique=True)
     airport_name = models.CharField(max_length=100)
     city = models.CharField(max_length=100)
     country = models.CharField(max_length=55)
     timezone = models.CharField(max_length=50, blank=True)
-    
+
     def __str__(self):
         return f"{self.airport_code} - ({self.city}, {self.airport_name})"
-    
-    
+
+
 class Flight(models.Model):
     flight_number = models.CharField(max_length=20)
     airline = models.CharField(max_length=50)
@@ -50,22 +51,22 @@ class Flight(models.Model):
     departure_airport = models.ForeignKey(
         Airport, on_delete=models.SET_NULL, null=True, related_name='departure_airport'
     )
-    
+
     def __str__(self):
         return f"{self.flight_num_and_time}"
-    
+
     @property
     def flight_num_and_time(self):
         return f"{self.flight_number} - {self.scheduled_time.strftime('%Y-%m-%dT%H:%M:%S')}"
-    
-    
+
+
 class Seat(models.Model):
     seat_number = models.CharField(max_length=10)
     flight_id = models.ForeignKey(
         Flight, on_delete=models.CASCADE
     )
     is_taken = models.BooleanField(default=False)
-    
+
     def __str__(self):
         return f"{self.seat_number} - {self.flight_id.flight_num_and_time}"
 
@@ -77,8 +78,8 @@ class Flight_Seat(models.Model):
     booking_id = models.ForeignKey(
         Booking, on_delete=models.CASCADE
     )
-    
-    
+
+
 class Journey(models.Model):
     booking_id = models.ForeignKey(
         Booking, on_delete=models.CASCADE
