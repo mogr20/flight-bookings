@@ -18,15 +18,13 @@
                 </tr>
             </thead>
             <tbody>
-                {% for flight in flight_list %}
                 <tr>
-                    <td><a href="{% url 'flight_detail' flight.id %}">{{ flight.arrival_airport.city }}</a></td>
-                    <td><a href="{% url 'flight_detail' flight.id %}">{{ flight.airline }}</a></td>
-                    <td><a href="{% url 'flight_detail' flight.id %}">{{ flight.flight_number }}</a></td>
-                    <td><a href="{% url 'flight_detail' flight.id %}">{{ flight.expected_time|time:"H:i" }}</a></td>
-                    <td><a href="{% url 'flight_detail' flight.id %}">{{ flight.status }}</a></td>
+                    <td>{{ flight.arrival_airport.city }}</td>
+                    <td>{{ flight.airline }}</td>
+                    <td>{{ flight.flight_number }}</td>
+                    <td>{{ flight.expected_time|time:"H:i" }}</td>
+                    <td>{{ flight.status }}</td>
                 </tr>
-                {% endfor %}
             </tbody>
         </table>
     </div>
