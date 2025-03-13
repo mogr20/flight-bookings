@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.contrib import messages
-from .models import Flight, Journey
+from .models import Flight, Journey, Booking
 from .forms import BookingForm, JourneyForm
 
 
@@ -20,20 +20,16 @@ def flight_detail(request, flight_id):
     """
     queryset = Flight.objects.all()
     flight = get_object_or_404(queryset, pk=flight_id)
-    print("this is request:",request.method)
 
     if request.method == 'POST':
-        print("in request.post")
         # Handle booking form submission
         booking_form = BookingForm(data=request.POST)
         if booking_form.is_valid():
-            print("in validation")
             booking = booking_form.save(commit=False)
 
             # Create a new booking for the user first
             booking.user_id = request.user
             booking.save()
-            print("created booking", booking)
 
             # Now create the journey for this booking
             Journey.objects.create(booking_id=booking, flight_id=flight)
@@ -45,9 +41,27 @@ def flight_detail(request, flight_id):
         else:
             print("bookingform.errors", booking_form.errors)
 
-    journey_form = JourneyForm()
     booking_form = BookingForm()
 
     return render(request, 'booking/flight_detail.html', {
         "flight": flight,
+    })
+
+def my_booking(request, user_id):
+    """
+    Displays all of the user's bookings
+    """
+    print("request.user: ", request.user)
+    bookings = Booking.objects.filter(user_id=user_id)
+    print("booking: ", bookings)
+
+    journeys = Journey.objects.filter(booking_id__in=bookings)
+    flight_list = Flight.objects.filter(id__in=journeys)
+    print("flight_list: ", flight_list)
+
+    return render(request, 'booking/my_booking.html', {
+        "booking_list": bookings,
+        "journey_list": journeys,
+        "flight_list": flight_list,
+        "username": user_id,
     })
