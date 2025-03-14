@@ -6,6 +6,14 @@
 <div class="container-fluid">
     <div class="row">
         {% if user.is_authenticated %}
+        <!-- {% for flight in flight_list %}
+            {% for field_name, field_value in flight.get_fields %}
+                {% if field_value %}
+                    {{ field_name }} => {{ field_value }}
+                {% endif %}
+            {% endfor %}
+        {% endfor %} -->
+
         {% for booking in booking_list %}
         <h3>Booking for: {{ booking.booking_date }}</h3>
         <table class="table">
@@ -17,12 +25,17 @@
                     <th>Flight Number</th>
                     <th>Departure Time</th>
                     <th>Arrival Time</th>
-                    <th>Status</th>>
+                    <th>Status</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
+                <!-- Loop through the journeys, using only the journeys that match the current booking -->
+                {% for journey in journey_list %}
+                {% if journey.booking_id == booking %}
+                <!-- now loop through the flights, and only display the flights that match the current journey -->
                 {% for flight in flight_list %}
+                {% if journey.flight_id == flight %}
                 <tr>
                     <td>{{ flight.departure_airport.city }}</td>
                     <td>{{ flight.arrival_airport.city }}</td>
@@ -34,11 +47,22 @@
                     <!-- Same as previously, except now its the expected arrival time -->
                     <td>{{ flight.arrival_expected_time|time:"H:i" }}</td>
                     <td>{{ flight.status }}</td>
-                    <td>Change Flight (button), Delete Flight from Booking (button)</td>
+                    <td>
+                        <button class="btn btn-warning btn-edit" data-journey_id="{{ journey.id }}"
+                            data-user_id="{{ user.id }}">Change Flight</button>
+                        <button class="btn btn-danger btn-delete" data-journey_id="{{ journey.id }}"
+                            data-user_id="{{ user.id }}">Remove Flight</button>
+                    </td>
                 </tr>
+                {% endif %}
+                <!-- end flights loop -->
+                {% endfor %}
+                {% endif %}
+                <!-- end journeys loop -->
                 {% endfor %}
             </tbody>
         </table>
+        <!-- end bookings loop -->
         {% endfor %}
         {% else %}
         <p>Error: Couldn't access your bookings.</p>
@@ -47,5 +71,30 @@
 
 </div>
 
+<!-- Remove flight confirmation modal (CRUD - DELETE) -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Remove flight?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to remove this flight from your booking?
+                This action cannot be undone.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a id="deleteConfirm" href="#" class="btn
+          btn-danger">Remove</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- end of index.html -->
-{% endblock %}
+{% endblock content %}
+
+{% block extras %}
+<script src="{% static 'js/bookings.js' %}"></script>
+{% endblock extras %}
