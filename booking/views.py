@@ -72,14 +72,10 @@ def booking_detail(request, user_id, booking_id):
     """
     Displays a specific booking, flights associated with it, and customers associated with it.
     """
-    print("user_id", user_id)
-    print("booking_id", booking_id)
-
-    booking = Booking.objects.filter(user_id=user_id, id=booking_id)
-
-    journeys = Journey.objects.filter(booking_id__in=booking)
+    booking = Booking.objects.get(user_id=request.user.id, id=booking_id)
+    journeys = Journey.objects.filter(booking_id=booking.id)
     flight_list = Flight.objects.filter(id__in=journeys.values('flight_id'))
-    passenger_list = Passenger.objects.filter(booking_id__in=booking)
+    passenger_list = Passenger.objects.filter(booking_id=booking.id)
 
     return render(request, 'booking/booking_passengers.html', {
         "booking": booking,

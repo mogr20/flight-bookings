@@ -7,19 +7,7 @@
 <div class="container-fluid">
     <div class="row">
         {% if user.is_authenticated %}
-        <p>User: {{ user.id }}</p>
-        <p>Booking: {{ booking }}</p>
-        <p>Booking Id: {{ booking.id }}</p>
-        <p>Booking.User: {{ booking.user_id }}</p>
-        {% for field_name, field_value in booking.get_fields %}
-            {% if field_value %}
-                {{ field_name }} => {{ field_value }}
-            {% endif %}
-        {% endfor %}
-
-        {% if user == booking.user %}
-        
-
+        {% if user == booking.user_id %}
         <h3>Booking for: {{ booking.booking_date }}</h3>
         <table class="table">
             <thead>
