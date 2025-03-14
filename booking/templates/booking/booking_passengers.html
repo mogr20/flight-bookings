@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<!-- content starts here -->
+<div class="container-fluid">
+    <div class="row">
+        {% if user.is_authenticated %}
+        <p>User: {{ user.id }}</p>
+        <p>Booking: {{ booking }}</p>
+        <p>Booking Id: {{ booking.id }}</p>
+        <p>Booking.User: {{ booking.user_id }}</p>
+        {% for field_name, field_value in booking.get_fields %}
+            {% if field_value %}
+                {{ field_name }} => {{ field_value }}
+            {% endif %}
+        {% endfor %}
+
+        {% if user == booking.user %}
+        
+
+        <h3>Booking for: {{ booking.booking_date }}</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Departing from</th>
+                    <th>Arriving at</th>
+                    <th>Airline</th>
+                    <th>Flight Number</th>
+                    <th>Departure Time</th>
+                    <th>Arrival Time</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Loop through the journeys, using only the journeys that match the current booking -->
+                {% for journey in journey_list %}
+                {% if journey.booking_id == booking %}
+                <!-- now loop through the flights, and only display the flights that match the current journey -->
+                {% for flight in flight_list %}
+                {% if journey.flight_id == flight %}
+                <tr>
+                    <td>{{ flight.departure_airport.city }}</td>
+                    <td>{{ flight.arrival_airport.city }}</td>
+                    <td>{{ flight.airline }}</td>
+                    <td>{{ flight.flight_number }}</td>
+                    <!-- We will be displaying the expected departure time rather than the scheduled time, so the user
+                 can immediately see when they need to get to the gate and when to expect take off. -->
+                    <td>{{ flight.expected_time|time:"H:i" }}</td>
+                    <!-- Same as previously, except now its the expected arrival time -->
+                    <td>{{ flight.arrival_expected_time|time:"H:i" }}</td>
+                    <td>{{ flight.status }}</td>
+                    <td>
+                        <!-- <button class="btn btn-warning btn-edit" data-journey_id="{{ journey.id }}"
+                            data-user_id="{{ user.id }}">Change Flight</button> -->
+                        <button class="btn btn-danger btn-delete" data-journey_id="{{ journey.id }}"
+                            data-user_id="{{ user.id }}">Remove Flight</button>
+                    </td>
+                </tr>
+                {% endif %}
+                <!-- end flights loop -->
+                {% endfor %}
+                {% endif %}
+                <!-- end journeys loop -->
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <table class="table col-md-8" style="margin: 1.3rem;">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Baggage (Kg)</th>
+                    <th>Dietary Requirements</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Loop through the customers for this booking -->
+                {% for passenger in passenger_list %}
+                <tr>
+                    <td>{{ passenger.first_name }}</td>
+                    <td>{{ passenger.last_name }}</td>
+                    <td>{{ passenger.baggage_weight }}</td>
+                    <td>{{ passenger.dietary_requirements }}</td>
+                </tr>
+                <!-- end passengers loop -->
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Passenger form -->
+        <div class="col-md-4 card mb-3 mt-3" style="padding: 1.3rem;">
+            <h3>Passenger Details</h3>
+            <p>Enter your details to book this flight</p>
+            <form id="bookingForm" method="post">
+                {{ passenger_form | crispy }}
+                {% csrf_token %}
+                <input type="hidden" name="user_id" value="{{ user.id }}">
+                {% if passenger_form.errors %}
+                <div class="alert alert-danger">
+                    <p>Please correct the following errors:</p>
+                    <ul>
+                        {% for error in passenger_form.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+                <button id="submitButton" type="submit" class="btn btn-primary">Book this Flight</button>
+            </form>
+        </div>
+        <!-- Else: logic if the user doesn't match the booking -->
+        {% else %}
+        <p>Error: You cannot view this booking.</p>
+        {% endif %}
+        <!-- Else: logic if the user isn't logged in -->
+        {% else %}
+        <p>Error: You must be logged in to view your booking.</p>
+        {% endif %}
+    </div>
+
+</div>
+
+<!-- Remove flight confirmation modal (CRUD - DELETE) -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Remove flight?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to remove this flight from your booking?
+                This action cannot be undone.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a id="deleteConfirm" href="#" class="btn
+          btn-danger">Remove</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- end of index.html -->
+{% endblock content %}
+
+{% block extras %}
+<script src="{% static 'js/bookings.js' %}"></script>
+{% endblock extras %}

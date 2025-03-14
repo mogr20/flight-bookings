@@ -1,23 +1,24 @@
 from django import forms
-from .models import Booking, Passenger, Journey
-
-
-class BookingForm(forms.ModelForm):
-    """
-    Form class for a user to make a booking for their journey
-    """
-    class Meta:
-        model = Booking
-        fields = ('user_id',)
+from .models import Passenger, Journey
 
 
 class PassengerForm(forms.ModelForm):
     """
-    Form class for a user to add a passenger to a booking
+    Form class for a user to add a passenger to an existing booking
     """
     class Meta:
         model = Passenger
         fields = ('booking_id', 'first_name', 'last_name', 'dietary_requirements',
+            'baggage_weight',)
+        
+        
+class NewBookingPassengerForm(forms.ModelForm):
+    """
+    Form class for a user to add a passenger to a new booking
+    """
+    class Meta:
+        model = Passenger
+        fields = ('first_name', 'last_name', 'dietary_requirements',
             'baggage_weight',)
 
 

@@ -16,6 +16,7 @@
 
         {% for booking in booking_list %}
         <h3>Booking for: {{ booking.booking_date }}</h3>
+        <button class="btn btn-info" href="{% url 'booking_detail' user.id booking.id %}">Booking Details</button>
         <table class="table">
             <thead>
                 <tr>
@@ -48,8 +49,8 @@
                     <td>{{ flight.arrival_expected_time|time:"H:i" }}</td>
                     <td>{{ flight.status }}</td>
                     <td>
-                        <button class="btn btn-warning btn-edit" data-journey_id="{{ journey.id }}"
-                            data-user_id="{{ user.id }}">Change Flight</button>
+                        <!-- <button class="btn btn-warning btn-edit" data-journey_id="{{ journey.id }}"
+                            data-user_id="{{ user.id }}">Change Flight</button> -->
                         <button class="btn btn-danger btn-delete" data-journey_id="{{ journey.id }}"
                             data-user_id="{{ user.id }}">Remove Flight</button>
                     </td>

@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
+{% load crispy_forms_tags %}
+
 {% block content %}
 <!-- content starts here -->
 
@@ -34,11 +36,26 @@
         </table>
         <div>
             {% if user.is_authenticated %}
-            <form id="bookingForm" method="post">
-                {% csrf_token %}
-                <input type="hidden" name="user_id" value="{{ user.id }}">
-                <button id="submitButton" type="submit" class="btn btn-primary">Book this Flight</button>
-            </form>
+            <div class="col-md-4 card mb-3 mt-3" style="padding: 1.3rem;">
+                <h3>Passenger Details</h3>
+                <p>Enter your details to book this flight</p>
+                <form id="bookingForm" method="post">
+                    {{ passenger_form | crispy }}
+                    {% csrf_token %}
+                    <input type="hidden" name="user_id" value="{{ user.id }}">
+                    {% if passenger_form.errors %}
+                    <div class="alert alert-danger">
+                        <p>Please correct the following errors:</p>
+                        <ul>
+                            {% for error in passenger_form.errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                    <button id="submitButton" type="submit" class="btn btn-primary">Book this Flight</button>
+                </form>
+            </div>
             {% else %}
             <p>Log in to book this flight</p>
             {% endif %}

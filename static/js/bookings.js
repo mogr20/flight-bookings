@@ -19,7 +19,7 @@ for (let button of deleteButtons) {
     button.addEventListener("click", (e) => {
         let userId = e.target.getAttribute("data-user_id");
         let journeyId = e.target.getAttribute("data-journey_id");
-        deleteConfirm.href = `/my_booking/${userId}/journey/${journeyId}/remove/`;
+        deleteConfirm.href = `/user/${userId}/journey/${journeyId}/remove/`;
         deleteModal.show();
     });
 }
