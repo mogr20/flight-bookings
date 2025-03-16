@@ -16,7 +16,7 @@
 
         {% for booking in booking_list %}
         <h3>Booking for: {{ booking.booking_date }}</h3>
-        <button class="btn btn-info" href="{% url 'booking_detail' user.id booking.id %}">Booking Details</button>
+        <a class="btn btn-info" href="{% url 'booking_detail' user.id booking.id %}">Booking Details</a>
         <table class="table">
             <thead>
                 <tr>
