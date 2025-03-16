@@ -54,7 +54,7 @@
                     {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == my_bookings_url %}active" aria-current="page{% endif%}"
-                            href="{% url 'my_bookings' user.id%}">My Booking</a>
+                            href="{% url 'my_bookings' user.id %}">My Booking</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == logout_url %}active" aria-current="page{% endif %}"

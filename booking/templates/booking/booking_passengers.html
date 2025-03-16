@@ -56,7 +56,45 @@
             </tbody>
         </table>
 
-        <table class="table col-md-8" style="margin: 1.3rem;">
+        <div id="passengerCarousel" class="carousel slide col-md-7" data-interval="false" data-keyboard="false">
+            <!-- <ol class="carousel-indicators">
+                {% for passenger in passenger_list %}
+                {% if forloop.first %}
+                <li data-target="#passengerCarousel" data-slide-to="{{ forloop.counter0 }}" class="active"></li>
+                {% else %}
+                <li data-target="#passengerCarousel" data-slide-to="{{ forloop.counter0 }}"></li>
+                {% endif %}
+                {% endfor %}
+            </ol> -->
+            <div class="carousel-inner">
+                {% for passenger in passenger_list %}
+                <div class="carousel-item
+                    {% if forloop.first %}active{% endif %} card mb-3 mt-3"
+                    style="padding: 1.3rem; margin-left: 3%; width: 90%;">
+                    <h3><span id="first_name_{{ passenger.id }}">{{ passenger.first_name }}
+                        </span> <span id="last_name_{{ passenger.id }}">{{ passenger.last_name }}</span></h3>
+                    <p>Baggage: <span id="baggage_{{ passenger.id }}">{{ passenger.baggage_weight }}</span> Kg</p>
+                    <p>Dietary Requirements: <span id="dietary_{{ passenger.id }}">
+                            {{ passenger.dietary_requirements }}</span></p>
+                    <button class="btn btn-warning btn-edit" data-passenger_id="{{ passenger.id }}"
+                        data-booking_id="{{ booking.id }}">Edit Passenger Details</button>
+                    <button class="btn btn-danger btn-delete" data-passenger_id="{{ passenger.id }}"
+                        data-booking_id="{{ booking.id }}">Delete Passenger</button>
+                </div>
+                {% endfor %}
+            </div>
+            <a class="carousel-control-prev" href="#passengerCarousel" role="button" data-slide="prev"
+                style="margin-left: -5%;">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only"></span>
+            </a>
+            <a class="carousel-control-next" href="#passengerCarousel" role="button" data-slide="next"
+                style="margin-right: -1%;">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only"></span>
+            </a>
+        </div>
+        <!-- <table class="table col-md-8" style="margin: 1.3rem;">
             <thead>
                 <tr>
                     <th>First Name</th>
@@ -65,25 +103,25 @@
                     <th>Dietary Requirements</th>
                 </tr>
             </thead>
-            <tbody>
-                <!-- Loop through the customers for this booking -->
-                {% for passenger in passenger_list %}
+            <tbody> -->
+        <!-- Loop through the customers for this booking -->
+        <!-- {% for passenger in passenger_list %}
                 <tr>
                     <td>{{ passenger.first_name }}</td>
                     <td>{{ passenger.last_name }}</td>
                     <td>{{ passenger.baggage_weight }}</td>
                     <td>{{ passenger.dietary_requirements }}</td>
-                </tr>
-                <!-- end passengers loop -->
-                {% endfor %}
+                </tr> -->
+        <!-- end passengers loop -->
+        <!-- {% endfor %}
             </tbody>
-        </table>
+        </table> -->
 
         <!-- Passenger form -->
         <div class="col-md-4 card mb-3 mt-3" style="padding: 1.3rem;">
             <h3>Passenger Details</h3>
             <p>Enter your details to book this flight</p>
-            <form id="bookingForm" method="post">
+            <form id="passengerForm" method="post">
                 {{ passenger_form | crispy }}
                 {% csrf_token %}
                 <input type="hidden" name="user_id" value="{{ user.id }}">
@@ -97,7 +135,7 @@
                     </ul>
                 </div>
                 {% endif %}
-                <button id="submitButton" type="submit" class="btn btn-primary">Book this Flight</button>
+                <button id="submitButton" type="submit" class="btn btn-primary">Add Customer to Booking</button>
             </form>
         </div>
         <!-- Else: logic if the user doesn't match the booking -->

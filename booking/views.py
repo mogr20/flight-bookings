@@ -77,11 +77,14 @@ def booking_detail(request, user_id, booking_id):
     flight_list = Flight.objects.filter(id__in=journeys.values('flight_id'))
     passenger_list = Passenger.objects.filter(booking_id=booking.id)
 
+    passenger_form = NewBookingPassengerForm()
+
     return render(request, 'booking/booking_passengers.html', {
         "booking": booking,
         "journey_list": journeys,
         "flight_list": flight_list,
         "passenger_list": passenger_list,
+        "passenger_form": passenger_form,
         "username": user_id,
     })
 
@@ -89,9 +92,6 @@ def my_journey_delete(request, user_id, journey_id):
     """
     Deletes a flight from a booking (by deleting the connecting journey object)
     """
-    print("user_id", user_id)
-    print("flight_id", journey_id)
-
     journey = get_object_or_404(Journey, pk=journey_id)
     booking = get_object_or_404(Booking, pk=journey.booking_id.id)
 
@@ -106,6 +106,28 @@ def my_journey_delete(request, user_id, journey_id):
         )
 
     return HttpResponseRedirect(reverse('my_bookings', args=(request.user.id,)))
+
+def edit_passenger(request, user_id, booking_id, passenger_id):
+    """
+    Edits a passenger's details in a booking
+    """
+    passenger = get_object_or_404(Passenger, pk=passenger_id)
+    booking = get_object_or_404(Booking, pk=booking_id)
+    passenger_form = NewBookingPassengerForm(data=request.POST, instance=passenger)
+
+    if booking.user_id.id == request.user.id and passenger_form.is_valid():
+        passenger_form.save()
+        messages.add_message(
+            request, messages.SUCCESS, "Passenger details updated."
+        )
+    elif passenger_form.is_valid() is False:
+        print("passenger_form.errors", passenger_form.errors)
+    else:
+        messages.add_message(
+            request, messages.ERROR, "You are not authorized to edit this booking's passenger."
+        )
+        
+    return HttpResponseRedirect(reverse('booking_detail', args=(request.user.id, booking_id)))
 
 # def my_booking_delete(request, booking_id):
 #     """
