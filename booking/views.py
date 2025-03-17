@@ -77,6 +77,23 @@ def booking_detail(request, user_id, booking_id):
     flight_list = Flight.objects.filter(id__in=journeys.values('flight_id'))
     passenger_list = Passenger.objects.filter(booking_id=booking.id)
 
+    if request.method == 'POST':
+        # Handles passenger form, and creating a new booking
+        passenger_form = NewBookingPassengerForm(data=request.POST)
+        if passenger_form.is_valid():
+            passenger = passenger_form.save(commit=False)
+
+            # Now add the passengers to the booking
+            passenger.booking_id = booking
+            passenger.save()
+
+            # Success message
+            messages.add_message(
+                request, messages.SUCCESS, 'Flight Booked successfully!'
+            )
+        else:
+            print("bookingform.errors", passenger_form.errors)
+
     passenger_form = NewBookingPassengerForm()
 
     return render(request, 'booking/booking_passengers.html', {
@@ -126,7 +143,26 @@ def edit_passenger(request, user_id, booking_id, passenger_id):
         messages.add_message(
             request, messages.ERROR, "You are not authorized to edit this booking's passenger."
         )
-        
+
+    return HttpResponseRedirect(reverse('booking_detail', args=(request.user.id, booking_id)))
+
+def delete_passenger(request, user_id, booking_id, passenger_id):
+    """
+    Deletes a passenger from a booking
+    """
+    passenger = get_object_or_404(Passenger, pk=passenger_id)
+    booking = get_object_or_404(Booking, pk=booking_id)
+
+    if booking.user_id.id == request.user.id:
+        passenger.delete()
+        messages.add_message(
+            request, messages.SUCCESS, "Passenger removed from booking."
+        )
+    else:
+        messages.add_message(
+            request, messages.ERROR, "You are not authorized to remove this user's passenger."
+        )
+
     return HttpResponseRedirect(reverse('booking_detail', args=(request.user.id, booking_id)))
 
 # def my_booking_delete(request, booking_id):

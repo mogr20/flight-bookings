@@ -8,6 +8,8 @@ const submitButton = document.getElementById('submitButton');
 
 const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
 const deleteButtons = document.getElementsByClassName('btn-delete');
+const deleteBody = document.getElementById('modal-body');
+const deleteTitle = document.getElementById('deleteModalLabel');
 const editButtons = document.getElementsByClassName('btn-edit');
 const deleteConfirm = document.getElementById('deleteConfirm');
 
@@ -24,9 +26,22 @@ const deleteConfirm = document.getElementById('deleteConfirm');
 for (let button of deleteButtons) {
     button.addEventListener("click", (e) => {
         let userId = e.target.getAttribute("data-user_id");
-        let journeyId = e.target.getAttribute("data-journey_id");
-        deleteConfirm.href = `/user/${userId}/journey/${journeyId}/remove/`;
-        deleteModal.show();
+        // If the delete button is a passenger delete button
+        if (e.target.hasAttribute("data-passenger_id")) {
+            let passengerId = e.target.getAttribute("data-passenger_id");
+            let bookingId = e.target.getAttribute("data-booking_id");
+            deleteBody.innerText = "Are you sure you want to remove this passenger?\nThis action cannot be undone.";
+            deleteTitle.innerText = "Remove Passenger?";
+            deleteConfirm.href = `/user/${userId}/booking/${bookingId}/remove_passenger/${passengerId}/`;
+            deleteConfirm.innerText = "Remove Passenger";
+            deleteModal.show();
+        }
+        // If the delete button is a journey delete button
+        else if (e.target.hasAttribute("data-journey_id")) {
+            let journeyId = e.target.getAttribute("data-journey_id");
+            deleteConfirm.href = `/user/${userId}/journey/${journeyId}/remove/`;
+            deleteModal.show();
+        }
     });
 }
 
@@ -43,8 +58,6 @@ for (let button of deleteButtons) {
 for (let button of editButtons) {
     button.addEventListener("click", (e) => {
         if (e.target.hasAttribute("data-passenger_id")) {
-            let userId = e.target.getAttribute("data-user_id");
-            let bookingId = e.target.getAttribute("data-booking_id");
             let passengerId = e.target.getAttribute("data-passenger_id");
             let passengerFirstName = document.getElementById(`first_name_${passengerId}`).innerText;
             let passengerLastName = document.getElementById(`last_name_${passengerId}`).innerText;
@@ -66,11 +79,8 @@ for (let button of editButtons) {
         }
         else if (e.target.hasAttribute("data-journey_id")) {
             console.log("in edit else if: journey_id");
+            let userId = e.target.getAttribute("data-user_id");
+            let bookingId = e.target.getAttribute("data-booking_id");
         }
-        // let commentId = e.target.getAttribute("data-comment_id");
-        // let commentContent = document.getElementById(`comment${commentId}`).innerText;
-        // commentText.value = commentContent;
-        // submitButton.innerText = "Update";
-        // commentForm.setAttribute("action", `edit_comment/${commentId}`);
     });
 }

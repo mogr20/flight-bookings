@@ -11,4 +11,6 @@ urlpatterns = [
         views.my_journey_delete, name='my_journey_delete'),
     path('user/<int:user_id>/booking/<int:booking_id>/edit_passenger/<int:passenger_id>/',
         views.edit_passenger, name='edit_passenger'),
+    path('user/<int:user_id>/booking/<int:booking_id>/remove_passenger/<int:passenger_id>/',
+        views.delete_passenger, name='delete_passenger'),
 ]

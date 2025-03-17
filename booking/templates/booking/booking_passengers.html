@@ -79,7 +79,7 @@
                     <button class="btn btn-warning btn-edit" data-passenger_id="{{ passenger.id }}"
                         data-booking_id="{{ booking.id }}">Edit Passenger Details</button>
                     <button class="btn btn-danger btn-delete" data-passenger_id="{{ passenger.id }}"
-                        data-booking_id="{{ booking.id }}">Delete Passenger</button>
+                        data-user_id="{{ user.id }}" data-booking_id="{{ booking.id }}">Delete Passenger</button>
                 </div>
                 {% endfor %}
             </div>
@@ -158,14 +158,13 @@
                 <h5 class="modal-title" id="deleteModalLabel">Remove flight?</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="modal-body">
                 Are you sure you want to remove this flight from your booking?
                 This action cannot be undone.
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <a id="deleteConfirm" href="#" class="btn
-          btn-danger">Remove</a>
+                <a id="deleteConfirm" href="#" class="btn btn-danger">Remove</a>
             </div>
         </div>
     </div>
