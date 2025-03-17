@@ -56,24 +56,16 @@
             </tbody>
         </table>
 
-        <div id="passengerCarousel" class="carousel slide col-md-7" data-interval="false" data-keyboard="false">
-            <!-- <ol class="carousel-indicators">
-                {% for passenger in passenger_list %}
-                {% if forloop.first %}
-                <li data-target="#passengerCarousel" data-slide-to="{{ forloop.counter0 }}" class="active"></li>
-                {% else %}
-                <li data-target="#passengerCarousel" data-slide-to="{{ forloop.counter0 }}"></li>
-                {% endif %}
-                {% endfor %}
-            </ol> -->
+        <div id="passengerCarousel" class="carousel slide col-md-7" data-bs-ride="carousel" data-interval="false"
+            data-keyboard="false">
             <div class="carousel-inner">
                 {% for passenger in passenger_list %}
-                <div class="carousel-item
-                    {% if forloop.first %}active{% endif %} card mb-3 mt-3"
+                <div class="carousel-item {% if forloop.first %}active{% endif %} card mb-3 mt-3"
                     style="padding: 1.3rem; margin-left: 3%; width: 90%;">
                     <h3><span id="first_name_{{ passenger.id }}">{{ passenger.first_name }}
                         </span> <span id="last_name_{{ passenger.id }}">{{ passenger.last_name }}</span></h3>
-                    <p>Baggage: <span id="baggage_{{ passenger.id }}">{{ passenger.baggage_weight }}</span> Kg</p>
+                    <p>Baggage: <span id="baggage_{{ passenger.id }}">
+                            {{ passenger.baggage_weight }}</span> Kg</p>
                     <p>Dietary Requirements: <span id="dietary_{{ passenger.id }}">
                             {{ passenger.dietary_requirements }}</span></p>
                     <button class="btn btn-warning btn-edit" data-passenger_id="{{ passenger.id }}"
@@ -82,40 +74,19 @@
                         data-user_id="{{ user.id }}" data-booking_id="{{ booking.id }}">Delete Passenger</button>
                 </div>
                 {% endfor %}
+                <div class="carousel-item active card mb-3 mt-3">
+
+                </div>
             </div>
-            <a class="carousel-control-prev" href="#passengerCarousel" role="button" data-slide="prev"
-                style="margin-left: -5%;">
+            <button class="carousel-control-prev" data-bs-target="#passengerCarousel" type="button" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only"></span>
-            </a>
-            <a class="carousel-control-next" href="#passengerCarousel" role="button" data-slide="next"
-                style="margin-right: -1%;">
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" data-bs-target="#passengerCarousel" type="button" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only"></span>
-            </a>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
-        <!-- <table class="table col-md-8" style="margin: 1.3rem;">
-            <thead>
-                <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Baggage (Kg)</th>
-                    <th>Dietary Requirements</th>
-                </tr>
-            </thead>
-            <tbody> -->
-        <!-- Loop through the customers for this booking -->
-        <!-- {% for passenger in passenger_list %}
-                <tr>
-                    <td>{{ passenger.first_name }}</td>
-                    <td>{{ passenger.last_name }}</td>
-                    <td>{{ passenger.baggage_weight }}</td>
-                    <td>{{ passenger.dietary_requirements }}</td>
-                </tr> -->
-        <!-- end passengers loop -->
-        <!-- {% endfor %}
-            </tbody>
-        </table> -->
 
         <!-- Passenger form -->
         <div class="col-md-4 card mb-3 mt-3" style="padding: 1.3rem;">
