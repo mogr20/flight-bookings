@@ -22,3 +22,33 @@ button.expand-btn {
 #navbar {
     background-color: silver;
 }
+
+#table-header {
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    background-color: white;
+}
+
+#table-header div {
+    padding-top: 4px;
+    /* border-right: 1px solid gray; */
+}
+
+.table-row:hover:not(:has(.expand-btn:hover)) {
+    background-color: lightskyblue;
+}
+
+.table-row div {
+    padding-bottom: 2px;
+    /* border-right: 1px solid gray; */
+} 
+
+.table-row-odd {
+    border-bottom: 1px solid gray;
+    background-color: lightgray;
+}
+
+.table-row-even {
+    border-bottom: 1px solid gray;
+    background-color: white;
+}

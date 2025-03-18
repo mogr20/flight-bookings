@@ -2,10 +2,53 @@ h1 {
     color: red;
 }
 
+h3 {
+    font-size: 22px;
+}
+
 body {
     background-color: lightblue;
 }
 
+button.expand-btn {
+    font-size: 12px;
+    background-color: blue;
+    /* height 2px, width 14px */
+    border-color: blue;
+    padding: 7px 12px;
+    border-radius: 20%;
+}
+
 #navbar {
     background-color: silver;
+}
+
+#table-header {
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    background-color: white;
+}
+
+#table-header div {
+    padding-top: 4px;
+    /* border-right: 1px solid gray; */
+}
+
+.table-row:hover:not(:has(.expand-btn:hover)) {
+    background-color: lightskyblue;
+}
+
+.table-row div {
+    padding-bottom: 2px;
+    /* border-right: 1px solid gray; */
+} 
+
+.table-row-odd {
+    border-bottom: 1px solid gray;
+    background-color: lightgray;
+}
+
+.table-row-even {
+    border-bottom: 1px solid gray;
+    background-color: white;
 }

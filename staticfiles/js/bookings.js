@@ -84,11 +84,3 @@ for (let button of editButtons) {
         }
     });
 }
-
-document.querySelector('.carousel-control-prev').addEventListener('click', () => {
-    console.log('Previous button clicked');
-});
-
-document.querySelector('.carousel-control-next').addEventListener('click', () => {
-    console.log('Next button clicked');
-});
