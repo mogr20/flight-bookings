@@ -2,8 +2,21 @@ h1 {
     color: red;
 }
 
+h3 {
+    font-size: 22px;
+}
+
 body {
     background-color: lightblue;
+}
+
+button.expand-btn {
+    font-size: 12px;
+    background-color: blue;
+    /* height 2px, width 14px */
+    border-color: blue;
+    padding: 7px 12px;
+    border-radius: 20%;
 }
 
 #navbar {

@@ -53,10 +53,10 @@
                     </li> -->
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link {% if request.resolver_match.url_name == my_bookings %}active" aria-current="page{% endif%}"
-                            href="{% url 'my_bookings' user.id %}">My Booking</a>
-                            <!-- request.path.contains -->
-                             <!-- check middleware requirements for request.resolver_match and check documentation -->
+                        <a class="nav-link {% if request.resolver_match.url_name == my_bookings %}active"
+                            aria-current="page{% endif%}" href="{% url 'my_bookings' user.id %}">My Booking</a>
+                        <!-- request.path.contains -->
+                        <!-- check middleware requirements for request.resolver_match and check documentation -->
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == logout_url %}active" aria-current="page{% endif %}"
@@ -85,12 +85,28 @@
                 <div class="alert {{ message.tags }} alert-dismissible
       fade show" id="msg" role="alert">
                     {{ message | safe }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">+</button>
                 </div>
                 {% endfor %}
             </div>
         </div>
     </div>
+    <!-- <div class="toast-container position-static translate-middle-x">
+        {% for message in messages %}
+        <div class="toast {{ message.tags }}" role="alert" aria-live="assertive" aria-atomic="true"
+            data-bs-autohide="true" data-bs-delay="5000" data-bs-animation="true">
+            <div class="toast-header">
+                <strong class="me-auto">Flight Booking</strong>
+                <small class="text-body-secondary">{{ message.tags }}</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                {{ message | safe }}
+            </div>
+        </div>
+        {% endfor %}
+    </div> -->
+
     <main class="flex-shrink-0">
         {% if user.is_authenticated %}
         <p class="text-end m-3">You are logged in as {{ user }}</p>
