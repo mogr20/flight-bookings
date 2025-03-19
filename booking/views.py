@@ -55,7 +55,7 @@ def all_my_bookings(request, user_id):
     """
     Displays all of the user's bookings, and flights associated with them.
     """
-    bookings = Booking.objects.filter(user_id=user_id)
+    bookings = Booking.objects.filter(user_id=user_id).order_by('-booking_date')
 
     journeys = Journey.objects.filter(booking_id__in=bookings)
     flight_list = Flight.objects.filter(id__in=journeys.values('flight_id'))
@@ -73,6 +73,7 @@ def booking_detail(request, user_id, booking_id):
     Displays a specific booking, flights associated with it, and customers associated with it.
     """
     booking = Booking.objects.get(user_id=request.user.id, id=booking_id)
+
     journeys = Journey.objects.filter(booking_id=booking.id)
     flight_list = Flight.objects.filter(id__in=journeys.values('flight_id'))
     passenger_list = Passenger.objects.filter(booking_id=booking.id)
