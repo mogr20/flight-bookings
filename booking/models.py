@@ -59,9 +59,6 @@ class Flight(models.Model):
     def __str__(self):
         return f"{self.flight_num_and_time}"
 
-    def get_fields(self):
-        return [(field.name, field.value_to_string(self)) for field in Flight._meta.fields]
-
     @property
     def flight_num_and_time(self):
         return f"{self.flight_number} - {self.scheduled_time}"
