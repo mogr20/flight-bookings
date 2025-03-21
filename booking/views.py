@@ -115,6 +115,8 @@ def my_journey_delete(request, user_id, journey_id):
 
     if booking.user_id.id == request.user.id:
         journey.delete()
+        # for now, we delete the booking too as we only have one flight per booking
+        booking.delete()
         messages.add_message(
             request, messages.SUCCESS, "Flight removed from booking."
         )
@@ -165,18 +167,3 @@ def delete_passenger(request, user_id, booking_id, passenger_id):
         )
 
     return HttpResponseRedirect(reverse('booking_detail', args=(request.user.id, booking_id)))
-
-# def my_booking_delete(request, booking_id):
-#     """
-#     Deletes a booking
-#     """
-#     booking = get_object_or_404(Booking, pk=booking_id)
-#     booking.delete()
-
-#     return HttpResponseRedirect(reverse('my_bookings', args=(request.user.id,)))
-
-# def get_fields(self):
-#     return [(field.name, field.value_to_string(self)) for field in Flight._meta.fields]
-
-def get_fields(self):
-    return [(field.name, field.value_to_string(self)) for field in Booking._meta.fields]

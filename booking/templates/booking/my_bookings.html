@@ -8,7 +8,7 @@
         {% if user.is_authenticated %}
         {% for booking in booking_list %}
         <h3>
-            <div class="col-12 col-md-6">Booking for: </div> 
+            <div class="col-12 col-md-6">Booking for: </div>
             <div class="col-12 col-md-6">{{ booking.booking_date }}</div>
         </h3>
         <a class="btn btn-info" href="{% url 'booking_detail' user.id booking.id %}">Booking Details</a>
@@ -57,66 +57,64 @@
             </div>
             <!-- Loop through the journeys, using only the journeys that match the current booking -->
             {% for journey in journey_list %}
-                {% if journey.booking_id == booking %}
-                <!-- now loop through the flights, and only display the flights that match the current journey -->
-                {% for flight in flight_list %}
-                    {% if journey.flight_id == flight %}
-                    <a href="{% url 'flight_detail' flight.id %}">
-                        <div class="row row-cols-8 row-cols-sm-9 row-cols-xl-10
-                            table-row {% cycle 'table-row-odd' 'table-row-even' %}">
-                            <div class="col">{{ flight.departure_airport.city }}</div>
-                            <div class="col">{{ flight.arrival_airport.city }}</div>
-                            <!-- hide airline name on large or smaller devices -->
-                            <div class="col d-none d-xl-block">{{ flight.airline }}</div>
-                            <!-- hide flight code on x-small devices -->
-                            <div class="col d-none d-sm-block">{{ flight.flight_number }}</div>
-                            <div class="col d-block">{{ flight.expected_time|time:"H:i" }}</div>
-                            <div class="col">{{ flight.arrival_expected_time|time:"H:i" }}</div>
-                            <!-- if statement needs to check if this is a departure board or not.
+            {% if journey.booking_id == booking %}
+            <!-- now loop through the flights, and only display the flights that match the current journey -->
+            {% for flight in flight_list %}
+            {% if journey.flight_id == flight %}
+            <div class="row row-cols-8 row-cols-sm-9 row-cols-xl-10
+                            booking-row {% cycle 'table-row-odd' 'table-row-even' %}">
+                <div class="col">{{ flight.departure_airport.city }}</div>
+                <div class="col">{{ flight.arrival_airport.city }}</div>
+                <!-- hide airline name on large or smaller devices -->
+                <div class="col d-none d-xl-block">{{ flight.airline }}</div>
+                <!-- hide flight code on x-small devices -->
+                <div class="col d-none d-sm-block">{{ flight.flight_number }}</div>
+                <div class="col d-block">{{ flight.expected_time|time:"H:i" }}</div>
+                <div class="col">{{ flight.arrival_expected_time|time:"H:i" }}</div>
+                <!-- if statement needs to check if this is a departure board or not.
                              do not use the is_departure field, as that is now redundant. -->
-                            {% if flight.terminal %}
-                            <!-- if departure, hide terminal on small or smaller devices -->
-                            <div class="col d-none d-md-block">{{ flight.terminal }}</div>
-                            {% endif %}
-                            <!-- if statement needs to check if this is a departure board or not.
-                             do not use the is_departure field, as that is now redundant. -->
-                            {% if flight.gate %}
-                            <!-- if departure, hide gate on medium or smaller devices -->
-                            <div class="col d-none d-lg-block">{{ flight.gate }}</div>
-                            {% endif %}
-                            <div class="col d-block">{{ flight.status }}</div>
-                            <!-- show expand button on large or smaller devices -->
-                            <div class="col d-block d-xl-none text-end">
-                                <button class="btn btn-primary expand-btn" data-flight_id="expand-{{ flight.id }}"></button>
-                            </div>
-                        </div>
-                    </a>
-                    <!-- plus button toggles this extra information row to be visible. -->
-                    <div class="row extra-flight-info" id="expand-{{ flight.id }}" style="display: none;">
-                        <!-- show airline name on large or smaller devices -->
-                        <div class="col d-block d-xl-none"><strong>Airline: </strong>{{ flight.airline }}</div>
-                        <!-- show flight code on x-small devices -->
-                        <div class="col d-block d-sm-none"><strong>Flight Number: </strong>{{ flight.flight_number }}</div>
-                        <!-- if statement needs to check if this is a departure board or not.
-                             do not use the is_departure field, as that is now redundant. -->
-                        {% if flight.terminal %}
-                        <!-- if departure, show terminal on small or smaller devices -->
-                        <div class="col d-block d-md-none"><strong>Terminal: </strong>{{ flight.terminal }}</div>
-                        {% endif %}
-                        <!-- if statement needs to check if this is a departure board or not.
-                             do not use the is_departure field, as that is now redundant. -->
-                        {% if flight.gate %}
-                        <!-- if departure, show gate on medium or smaller devices -->
-                        <div class="col d-block d-lg-none"><strong>Gate: </strong>{{ flight.gate }}</div>
-                        {% endif %}
-                    </div>
-                <!-- end flights loop -->
-                    {% endif %}
-                {% endfor %}
-                <!-- Reset the cycle now that we are starting a new flights table, for the next journey -->
-                {% resetcycle %}
-            <!-- end journeys loop -->
+                {% if flight.terminal %}
+                <!-- if departure, hide terminal on small or smaller devices -->
+                <div class="col d-none d-md-block">{{ flight.terminal }}</div>
                 {% endif %}
+                <!-- if statement needs to check if this is a departure board or not.
+                             do not use the is_departure field, as that is now redundant. -->
+                {% if flight.gate %}
+                <!-- if departure, hide gate on medium or smaller devices -->
+                <div class="col d-none d-lg-block">{{ flight.gate }}</div>
+                {% endif %}
+                <div class="col d-block">{{ flight.status }}</div>
+                <!-- show expand button on large or smaller devices -->
+                <div class="col d-block d-xl-none text-end">
+                    <button class="btn btn-primary expand-btn" data-flight_id="expand-{{ flight.id }}"></button>
+                </div>
+            </div>
+            <!-- plus button toggles this extra information row to be visible. -->
+            <div class="row extra-flight-info" id="expand-{{ flight.id }}" style="display: none;">
+                <!-- show airline name on large or smaller devices -->
+                <div class="col d-block d-xl-none"><strong>Airline: </strong>{{ flight.airline }}</div>
+                <!-- show flight code on x-small devices -->
+                <div class="col d-block d-sm-none"><strong>Flight Number: </strong>{{ flight.flight_number }}</div>
+                <!-- if statement needs to check if this is a departure board or not.
+                             do not use the is_departure field, as that is now redundant. -->
+                {% if flight.terminal %}
+                <!-- if departure, show terminal on small or smaller devices -->
+                <div class="col d-block d-md-none"><strong>Terminal: </strong>{{ flight.terminal }}</div>
+                {% endif %}
+                <!-- if statement needs to check if this is a departure board or not.
+                             do not use the is_departure field, as that is now redundant. -->
+                {% if flight.gate %}
+                <!-- if departure, show gate on medium or smaller devices -->
+                <div class="col d-block d-lg-none"><strong>Gate: </strong>{{ flight.gate }}</div>
+                {% endif %}
+            </div>
+            <!-- end flights loop -->
+            {% endif %}
+            {% endfor %}
+            <!-- Reset the cycle now that we are starting a new flights table, for the next journey -->
+            {% resetcycle %}
+            <!-- end journeys loop -->
+            {% endif %}
             {% endfor %}
         </div>
         <!-- end bookings loop -->

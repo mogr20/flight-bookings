@@ -39,17 +39,19 @@ button.expand-btn {
     background-color: lightskyblue;
 }
 
-.table-row div {
+.table-row, .booking-row {
+    border-bottom: 1px solid gray;
+}
+
+.table-row div, .booking-row div {
     padding-bottom: 2px;
     /* border-right: 1px solid gray; */
 } 
 
 .table-row-odd {
-    border-bottom: 1px solid gray;
     background-color: lightgray;
 }
 
 .table-row-even {
-    border-bottom: 1px solid gray;
     background-color: white;
 }
