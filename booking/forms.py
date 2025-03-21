@@ -10,8 +10,8 @@ class PassengerForm(forms.ModelForm):
         model = Passenger
         fields = ('booking_id', 'first_name', 'last_name', 'dietary_requirements',
             'baggage_weight',)
-        
-        
+
+
 class NewBookingPassengerForm(forms.ModelForm):
     """
     Form class for a user to add a passenger to a new booking

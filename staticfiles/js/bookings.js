@@ -39,7 +39,10 @@ for (let button of deleteButtons) {
         // If the delete button is a journey delete button
         else if (e.target.hasAttribute("data-journey_id")) {
             let journeyId = e.target.getAttribute("data-journey_id");
+            deleteBody.innerText = "Are you sure you want to remove this booking?\nThis action cannot be undone."
+            deleteTitle.innerText = "Remove Booking?";
             deleteConfirm.href = `/user/${userId}/journey/${journeyId}/remove/`;
+            deleteConfirm.innerText = "Remove";
             deleteModal.show();
         }
     });
@@ -57,6 +60,8 @@ for (let button of deleteButtons) {
 */
 for (let button of editButtons) {
     button.addEventListener("click", (e) => {
+        // if statement here is for future functionality of an else if statement for editing bookings
+        // currently, we only edit passengers.
         if (e.target.hasAttribute("data-passenger_id")) {
             let passengerId = e.target.getAttribute("data-passenger_id");
             let passengerFirstName = document.getElementById(`first_name_${passengerId}`).innerText;
@@ -64,26 +69,20 @@ for (let button of editButtons) {
             let passengerBaggage = document.getElementById(`baggage_${passengerId}`).innerText;
             let passengerDietary = document.getElementById(`dietary_${passengerId}`).innerText;
 
-            // Set the focus to the passenger form, better UX design for mobiles and tablets.
+            // Scroll down to the passenger form, better UX design for mobiles and tablets.
             passengerForm.scrollIntoView(true);
 
             formFirstName.value = passengerFirstName;
             formLastName.value = passengerLastName;
+            // prevent setting null or empty values that are already the default
             if (passengerDietary != "") {
-                console.log("in dietary if: ", passengerDietary);
                 formDietary.value = passengerDietary;
             }
             if (passengerBaggage != 0) {
-                console.log("in passenger baggage if: ", passengerBaggage);
                 formBaggage.value = passengerBaggage;
             }
             submitButton.innerText = "Update Customer info";
             passengerForm.setAttribute("action", `edit_passenger/${passengerId}/`);
-        }
-        else if (e.target.hasAttribute("data-journey_id")) {
-            console.log("in edit else if: journey_id");
-            let userId = e.target.getAttribute("data-user_id");
-            let bookingId = e.target.getAttribute("data-booking_id");
         }
     });
 }

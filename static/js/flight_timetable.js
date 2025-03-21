@@ -1,9 +1,20 @@
 const expandButtons = document.getElementsByClassName('expand-btn');
 const flightInfoDivs = document.getElementsByClassName('extra-flight-info');
 
+/**
+ * Intialises the expansion functionality for the provided expand buttons.
+ * 
+ * For each button in the `expandButtons` collection:
+ * - On click, get the div ID for the flight we are expanding.
+ * - If the flight info div is already shown, hide it and return.
+ * - Else, we hide all previously expanded flight info divs.
+ * - Displays the flight info div associated with the clicked button
+ */
+
 for (let button of expandButtons) {
     button.addEventListener("click", (e) => {
         // Prevent the default behavior of the <a> element
+        // we don't want to follow the link to book a flight, we want to click the expand button.
         e.preventDefault();
 
         let flightDivId = e.target.getAttribute("data-flight_id");

@@ -71,3 +71,9 @@ main {
 .table-row-even {
     background-color: white;
 }
+
+/* accordion styling */
+#passengerAccordion {
+    margin-top: 1.02rem;
+    border-color: rgba(0,0,0,.125);
+}

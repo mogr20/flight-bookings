@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic
 from django.contrib import messages
 from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 from .models import Flight, Journey, Booking, Passenger
 from .forms import NewBookingPassengerForm
 
@@ -51,7 +52,7 @@ def flight_detail(request, flight_id):
         "passenger_form": passenger_form,
     })
 
-# @login_required
+@login_required
 def all_my_bookings(request, user_id):
     """
     Displays all of the user's bookings, and flights associated with them.
@@ -68,15 +69,15 @@ def all_my_bookings(request, user_id):
         "username": user_id,
     })
 
-# @login_required
+@login_required
 def booking_detail(request, user_id, booking_id):
     """
     Displays a specific booking, flights associated with it, and customers associated with it.
     """
     booking = Booking.objects.get(user_id=request.user.id, id=booking_id)
 
-    journeys = Journey.objects.filter(booking_id=booking.id)
-    flight_list = Flight.objects.filter(id__in=journeys.values('flight_id'))
+    journey = Journey.objects.get(booking_id=booking.id)
+    flight = Flight.objects.get(id=journey.flight_id.id)
     passenger_list = Passenger.objects.filter(booking_id=booking.id)
 
     if request.method == 'POST':
@@ -100,14 +101,14 @@ def booking_detail(request, user_id, booking_id):
 
     return render(request, 'booking/booking_passengers.html', {
         "booking": booking,
-        "journey_list": journeys,
-        "flight_list": flight_list,
+        "journey": journey,
+        "flight": flight,
         "passenger_list": passenger_list,
         "passenger_form": passenger_form,
         "username": user_id,
     })
 
-# @login_required
+@login_required
 def my_journey_delete(request, user_id, journey_id):
     """
     Deletes a flight from a booking (by deleting the connecting journey object)
@@ -117,10 +118,10 @@ def my_journey_delete(request, user_id, journey_id):
 
     if booking.user_id.id == request.user.id:
         journey.delete()
-        # for now, we delete the booking too as we only have one flight per booking
+        # for now, we delete the booking too, as we only have one flight per booking
         booking.delete()
         messages.add_message(
-            request, messages.SUCCESS, "Flight removed from booking."
+            request, messages.SUCCESS, "Flight Booking removed."
         )
     else:
         messages.add_message(
@@ -129,7 +130,7 @@ def my_journey_delete(request, user_id, journey_id):
 
     return HttpResponseRedirect(reverse('my_bookings', args=(request.user.id,)))
 
-# @login_required
+@login_required
 def edit_passenger(request, user_id, booking_id, passenger_id):
     """
     Edits a passenger's details in a booking
@@ -152,7 +153,7 @@ def edit_passenger(request, user_id, booking_id, passenger_id):
 
     return HttpResponseRedirect(reverse('booking_detail', args=(request.user.id, booking_id)))
 
-# @login_required
+@login_required
 def delete_passenger(request, user_id, booking_id, passenger_id):
     """
     Deletes a passenger from a booking

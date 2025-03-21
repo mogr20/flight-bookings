@@ -6,56 +6,19 @@
 <!-- content starts here -->
 <div class="container-fluid">
     <div class="row">
-        {% if user.is_authenticated %}
-        {% if user == booking.user_id %}
         <h3>Booking for: {{ booking.booking_date }}</h3>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Departing from</th>
-                    <th>Arriving at</th>
-                    <th>Airline</th>
-                    <th>Flight Number</th>
-                    <th>Departure Time</th>
-                    <th>Arrival Time</th>
-                    <th>Status</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Loop through the journeys, using only the journeys that match the current booking -->
-                {% for journey in journey_list %}
-                {% if journey.booking_id == booking %}
-                <!-- now loop through the flights, and only display the flights that match the current journey -->
-                {% for flight in flight_list %}
-                {% if journey.flight_id == flight %}
-                <tr>
-                    <td>{{ flight.departure_airport.city }}</td>
-                    <td>{{ flight.arrival_airport.city }}</td>
-                    <td>{{ flight.airline }}</td>
-                    <td>{{ flight.flight_number }}</td>
-                    <!-- We will be displaying the expected departure time rather than the scheduled time, so the user
-                 can immediately see when they need to get to the gate and when to expect take off. -->
-                    <td>{{ flight.expected_time|time:"H:i" }}</td>
-                    <!-- Same as previously, except now its the expected arrival time -->
-                    <td>{{ flight.arrival_expected_time|time:"H:i" }}</td>
-                    <td>{{ flight.status }}</td>
-                    <td>
-                        <!-- <button class="btn btn-warning btn-edit" data-journey_id="{{ journey.id }}"
-                            data-user_id="{{ user.id }}">Change Flight</button> -->
-                        <button class="btn btn-danger btn-delete" data-journey_id="{{ journey.id }}"
-                            data-user_id="{{ user.id }}">Remove Flight</button>
-                    </td>
-                </tr>
-                {% endif %}
-                <!-- end flights loop -->
-                {% endfor %}
-                {% endif %}
-                <!-- end journeys loop -->
-                {% endfor %}
-            </tbody>
-        </table>
-
+        <div class="col-12 col-md-6 col-lg-4"><strong>Departing from: </strong>{{ flight.departure_airport.city }}</div>
+        <div class="col-12 col-md-6 col-lg-4"><strong>Arriving at: </strong>{{ flight.arrival_airport.city }}</div>
+        <div class="col-12 col-md-6 col-lg-4"><strong>Airline: </strong>{{ flight.airline }}</div>
+        <div class="col-12 col-md-6 col-lg-4"><strong>Flight Number: </strong>{{ flight.flight_number }}</div>
+        <!-- We will be displaying the expected departure time rather than the scheduled time, so the user
+            can immediately see when they need to get to the gate and when to expect take off. -->
+        <div class="col-12 col-md-6 col-lg-4"><strong>Departure Time: </strong>{{ flight.expected_time|time:"H:i" }}</div>
+        <!-- Same as previously, except now its the expected arrival time -->
+        <div class="col-12 col-md-6 col-lg-4"><strong>Arrival Time: </strong>{{ flight.arrival_expected_time|time:"H:i" }}</div>
+        <div class="col-12 col-md-6 col-lg-4"><strong>Status: </strong>{{ flight.status }}</div>
+        <button class="btn btn-danger btn-delete" data-journey_id="{{ journey.id }}"
+                    data-user_id="{{ user.id }}">Remove Booking</button>
         <div id="passengerAccordion" class="accordion col-md-7">
             {% for passenger in passenger_list %}
             <div class="accordion-item">
@@ -106,14 +69,6 @@
                 <button id="submitButton" type="submit" class="btn btn-primary">Add Customer to Booking</button>
             </form>
         </div>
-        <!-- Else: logic if the user doesn't match the booking -->
-        {% else %}
-        <p>Error: You cannot view this booking.</p>
-        {% endif %}
-        <!-- Else: logic if the user isn't logged in -->
-        {% else %}
-        <p>Error: You must be logged in to view your booking.</p>
-        {% endif %}
     </div>
 
 </div>
@@ -123,11 +78,11 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="deleteModalLabel">Remove flight?</h5>
+                <h5 class="modal-title" id="deleteModalLabel">Remove Booking?</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" id="modal-body">
-                Are you sure you want to remove this flight from your booking?
+                Are you sure you want to remove this booking?
                 This action cannot be undone.
             </div>
             <div class="modal-footer">

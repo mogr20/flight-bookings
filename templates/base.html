@@ -4,7 +4,6 @@
 {% url 'account_login' as login_url %}
 {% url 'account_signup' as signup_url %}
 {% url 'account_logout' as logout_url %}
-{% url 'my_bookings' as my_booking_url %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -47,10 +46,11 @@
                         <a class="nav-link" href="#tips">Tips</a>
                     </li> -->
                     {% if user.is_authenticated %}
-                    {% url 'my_bookings' user.id as test %}
+                    {% url 'my_bookings' user.id as my_booking_url %}
                     <li class="nav-item">
-                        <a class="nav-link {% if test in request.path %}active"
-                            aria-current="page{% endif%}" href="{% url 'my_bookings' user.id %}">My Booking</a>
+                        <!-- We are setting the nav as active if we are in my_bookings.html and booking_passengers.html -->
+                        <a class="nav-link {% if my_booking_url in request.path %}active"
+                            aria-current="page{% endif %}" href="{% url 'my_bookings' user.id %}">My Booking</a>
                         <!-- request.path.contains -->
                         <!-- check middleware requirements for request.resolver_match and check documentation -->
                     </li>
