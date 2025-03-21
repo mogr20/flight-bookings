@@ -22,22 +22,6 @@
                 <div class="col">
                     <h3>Time</h3>
                 </div>
-                <!-- if statement needs to check if this is a departure board or not.
-         do not use the is_departure field, as that is now redundant. -->
-                {% if flight.terminal %}
-                <!-- if departure, hide terminal on small or smaller devices -->
-                <div class="col d-none d-md-block">
-                    <h3>Terminal</h3>
-                </div>
-                {% endif %}
-                <!-- if statement needs to check if this is a departure board or not.
-         do not use the is_departure field, as that is now redundant. -->
-                {% if flight.gate %}
-                <!-- if departure, hide gate on medium or smaller devices -->
-                <div class="col d-none d-lg-block">
-                    <h3>Gate</h3>
-                </div>
-                {% endif %}
                 <div class="col-3 col-sm-2">
                     <h3>Status</h3>
                 </div>
@@ -53,18 +37,6 @@
                     <!-- hide flight code on x-small devices -->
                     <div class="col d-none d-sm-block">{{ flight.flight_number }}</div>
                     <div class="col d-block">{{ flight.expected_time|time:"H:i" }}</div>
-                    <!-- if statement needs to check if this is a departure board or not.
-                     do not use the is_departure field, as that is now redundant. -->
-                    {% if flight.terminal %}
-                    <!-- if departure, hide terminal on small or smaller devices -->
-                    <div class="col d-none d-md-block">{{ flight.terminal }}</div>
-                    {% endif %}
-                    <!-- if statement needs to check if this is a departure board or not.
-                     do not use the is_departure field, as that is now redundant. -->
-                    {% if flight.gate %}
-                    <!-- if departure, hide gate on medium or smaller devices -->
-                    <div class="col d-none d-lg-block">{{ flight.gate }}</div>
-                    {% endif %}
                     <div class="col-3 col-sm-2 d-block">{{ flight.status }}</div>
                     <!-- show expand button on large or smaller devices -->
                     <div class="col d-block d-xl-none text-end">
@@ -78,18 +50,6 @@
                 <div class="col d-block d-xl-none"><strong>Airline: </strong>{{ flight.airline }}</div>
                 <!-- show flight code on x-small devices -->
                 <div class="col d-block d-sm-none"><strong>Flight Number: </strong>{{ flight.flight_number }}</div>
-                <!-- if statement needs to check if this is a departure board or not.
-                     do not use the is_departure field, as that is now redundant. -->
-                {% if flight.terminal %}
-                <!-- if departure, show terminal on small or smaller devices -->
-                <div class="col d-block d-md-none"><strong>Terminal: </strong>{{ flight.terminal }}</div>
-                {% endif %}
-                <!-- if statement needs to check if this is a departure board or not.
-                     do not use the is_departure field, as that is now redundant. -->
-                {% if flight.gate %}
-                <!-- if departure, show gate on medium or smaller devices -->
-                <div class="col d-block d-lg-none"><strong>Gate: </strong>{{ flight.gate }}</div>
-                {% endif %}
             </div>
             <!-- end flight loop -->
             {% endfor %}
