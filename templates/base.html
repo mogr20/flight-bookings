@@ -49,7 +49,7 @@
                     {% if user.is_authenticated %}
                     {% url 'my_bookings' user.id as test %}
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == test %}active"
+                        <a class="nav-link {% if test in request.path %}active"
                             aria-current="page{% endif%}" href="{% url 'my_bookings' user.id %}">My Booking</a>
                         <!-- request.path.contains -->
                         <!-- check middleware requirements for request.resolver_match and check documentation -->
