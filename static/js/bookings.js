@@ -65,7 +65,7 @@ for (let button of editButtons) {
             let passengerDietary = document.getElementById(`dietary_${passengerId}`).innerText;
 
             // Set the focus to the passenger form, better UX design for mobiles and tablets.
-            passengerForm.focus();
+            passengerForm.scrollIntoView(true);
 
             formFirstName.value = passengerFirstName;
             formLastName.value = passengerLastName;

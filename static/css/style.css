@@ -1,5 +1,5 @@
 h1 {
-    color: red;
+    color: black;
 }
 
 h3 {
@@ -21,6 +21,22 @@ button.expand-btn {
 
 #navbar {
     background-color: silver;
+}
+
+footer {
+    background-color: silver;
+    padding-bottom: 1.5rem;
+    text-align: center;
+    bottom: 0;
+    /* vertically align text closer to center */
+    padding-top: 1rem;
+    /* stick footer to bottom of page */
+    bottom:0;
+    width:100%;
+}
+
+main {
+    margin-bottom: 1rem;
 }
 
 /* Table styling */

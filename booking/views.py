@@ -51,6 +51,7 @@ def flight_detail(request, flight_id):
         "passenger_form": passenger_form,
     })
 
+# @login_required
 def all_my_bookings(request, user_id):
     """
     Displays all of the user's bookings, and flights associated with them.
@@ -106,6 +107,7 @@ def booking_detail(request, user_id, booking_id):
         "username": user_id,
     })
 
+# @login_required
 def my_journey_delete(request, user_id, journey_id):
     """
     Deletes a flight from a booking (by deleting the connecting journey object)
@@ -127,6 +129,7 @@ def my_journey_delete(request, user_id, journey_id):
 
     return HttpResponseRedirect(reverse('my_bookings', args=(request.user.id,)))
 
+# @login_required
 def edit_passenger(request, user_id, booking_id, passenger_id):
     """
     Edits a passenger's details in a booking
@@ -149,6 +152,7 @@ def edit_passenger(request, user_id, booking_id, passenger_id):
 
     return HttpResponseRedirect(reverse('booking_detail', args=(request.user.id, booking_id)))
 
+# @login_required
 def delete_passenger(request, user_id, booking_id, passenger_id):
     """
     Deletes a passenger from a booking

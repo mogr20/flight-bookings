@@ -64,6 +64,9 @@ for (let button of editButtons) {
             let passengerBaggage = document.getElementById(`baggage_${passengerId}`).innerText;
             let passengerDietary = document.getElementById(`dietary_${passengerId}`).innerText;
 
+            // Set the focus to the passenger form, better UX design for mobiles and tablets.
+            passengerForm.scrollIntoView(true);
+
             formFirstName.value = passengerFirstName;
             formLastName.value = passengerLastName;
             if (passengerDietary != "") {
