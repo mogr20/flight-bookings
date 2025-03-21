@@ -7,8 +7,8 @@
     <div class="row">
         <div id="flightsTable" class="container text-left">
             <!-- add if statements to adjust cols for departures vs arrivals -->
-            <div class="row row-cols-6 row-cols-sm-7 row-cols-xl-8" id="table-header">
-                <div class="col-5 col-sm-4 col-xl-3">
+            <div class="row row-cols-7 row-cols-md-9 row-cols-xl-10" id="table-header">
+                <div class="col-4 col-md-4 col-lg-3">
                     <h3>Destination</h3>
                 </div>
                 <!-- hide airline name on large or smaller devices -->
@@ -22,22 +22,24 @@
                 <div class="col">
                     <h3>Time</h3>
                 </div>
-                <div class="col-3 col-sm-2">
+                <div class="col">
                     <h3>Status</h3>
                 </div>
+                <!-- empty div for aligning columns when button appears show column on large or smaller devices-->
+                <div class="col d-block d-xl-none"></div>
             </div>
             <!-- loop through the flights, using the include insert the flight row -->
             {% for flight in flight_list %}
             <a href="{% url 'flight_detail' flight.id %}">
-                <div class="row row-cols-6 row-cols-sm-7 row-cols-xl-8
+                <div class="row row-cols-7 row-cols-md-9 row-cols-xl-10
                     table-row {% if forloop.counter0|divisibleby:2 %}table-row-odd{% else %}table-row-even{% endif %}">
-                    <div class="col-5 col-sm-4 col-xl-3 d-block">{{ flight.arrival_airport.city }}</div>
+                    <div class="col-4 col-md-4 col-lg-3">{{ flight.arrival_airport.city }}</div>
                     <!-- hide airline name on large or smaller devices -->
                     <div class="col col-xl-3 d-none d-xl-block">{{ flight.airline }}</div>
                     <!-- hide flight code on x-small devices -->
                     <div class="col d-none d-sm-block">{{ flight.flight_number }}</div>
-                    <div class="col d-block">{{ flight.expected_time|time:"H:i" }}</div>
-                    <div class="col-3 col-sm-2 d-block">{{ flight.status }}</div>
+                    <div class="col">{{ flight.expected_time|time:"H:i" }}</div>
+                    <div class="col">{{ flight.status }}</div>
                     <!-- show expand button on large or smaller devices -->
                     <div class="col d-block d-xl-none text-end">
                         <button class="btn btn-primary expand-btn" data-flight_id="expand-{{ flight.id }}"></button>
