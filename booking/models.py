@@ -26,7 +26,7 @@ class Passenger(models.Model):
     last_name = models.CharField(max_length=50)
     dietary_requirements = models.TextField(default="", blank=True)
     baggage_weight = models.CharField(
-        default="none",
+        default="None",
         blank=True,
         max_length=15,
         choices=[

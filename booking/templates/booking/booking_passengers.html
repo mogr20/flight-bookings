@@ -7,19 +7,19 @@
 <div class="container-fluid">
     <div class="row">
         <h3>Booking for: {{ booking.booking_date }}</h3>
-        <div class="col-12 col-md-6 col-lg-4"><strong>Departing from: </strong>{{ flight.departure_airport.city }}</div>
-        <div class="col-12 col-md-6 col-lg-4"><strong>Arriving at: </strong>{{ flight.arrival_airport.city }}</div>
-        <div class="col-12 col-md-6 col-lg-4"><strong>Airline: </strong>{{ flight.airline }}</div>
-        <div class="col-12 col-md-6 col-lg-4"><strong>Flight Number: </strong>{{ flight.flight_number }}</div>
+        <div class="col-12 col-sm-6 col-lg-4"><strong>Departing from: </strong>{{ flight.departure_airport.city }}</div>
+        <div class="col-12 col-sm-6 col-lg-4"><strong>Arriving at: </strong>{{ flight.arrival_airport.city }}</div>
+        <div class="col-12 col-sm-6 col-lg-4"><strong>Airline: </strong>{{ flight.airline }}</div>
+        <div class="col-12 col-sm-6 col-lg-4"><strong>Flight Number: </strong>{{ flight.flight_number }}</div>
         <!-- We will be displaying the expected departure time rather than the scheduled time, so the user
             can immediately see when they need to get to the gate and when to expect take off. -->
-        <div class="col-12 col-md-6 col-lg-4"><strong>Departure Time: </strong>{{ flight.expected_time|time:"H:i" }}</div>
+        <div class="col-12 col-sm-6 col-lg-4"><strong>Departure Time: </strong>{{ flight.expected_time|time:"H:i" }}</div>
         <!-- Same as previously, except now its the expected arrival time -->
-        <div class="col-12 col-md-6 col-lg-4"><strong>Arrival Time: </strong>{{ flight.arrival_expected_time|time:"H:i" }}</div>
-        <div class="col-12 col-md-6 col-lg-4"><strong>Status: </strong>{{ flight.status }}</div>
+        <div class="col-12 col-sm-6 col-lg-4"><strong>Arrival Time: </strong>{{ flight.arrival_expected_time|time:"H:i" }}</div>
+        <div class="col-12 col-sm-6 col-lg-4"><strong>Status: </strong>{{ flight.status }}</div>
         <button class="btn btn-danger btn-delete" data-journey_id="{{ journey.id }}"
                     data-user_id="{{ user.id }}">Remove Booking</button>
-        <div id="passengerAccordion" class="accordion col-md-7">
+        <div id="passengerAccordion" class="accordion col-lg-6">
             {% for passenger in passenger_list %}
             <div class="accordion-item">
                 <h2 class="accordion-header">
@@ -49,7 +49,7 @@
         </div>
 
         <!-- Passenger form -->
-        <div class="col-md-4 card mb-3 mt-3" style="padding: 1.3rem;">
+        <div class="col-lg-6 card mb-3 mt-3" style="padding: 1.3rem;">
             <h3>Passenger Details</h3>
             <p>Enter your details to book this flight</p>
             <form id="passengerForm" method="post">
