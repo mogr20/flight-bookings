@@ -104,7 +104,7 @@ def booking_detail(request, user_id, booking_id):
 
             # Success message
             messages.add_message(
-                request, messages.SUCCESS, 'Flight Booked successfully!'
+                request, messages.SUCCESS, 'Passenger added to Booking successfully!'
             )
         else:
             print("bookingform.errors", passenger_form.errors)
