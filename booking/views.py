@@ -57,6 +57,12 @@ def all_my_bookings(request, user_id):
     """
     Displays all of the user's bookings, and flights associated with them.
     """
+    if user_id != request.user.id:
+        messages.add_message(
+            request, messages.ERROR, "You are not authorized to view this user's bookings."
+        )
+        return HttpResponseRedirect(reverse('my_bookings', args=(request.user.id,)))
+
     bookings = Booking.objects.filter(user_id=user_id).order_by('-booking_date')
 
     journeys = Journey.objects.filter(booking_id__in=bookings)
@@ -74,6 +80,12 @@ def booking_detail(request, user_id, booking_id):
     """
     Displays a specific booking, flights associated with it, and customers associated with it.
     """
+    if user_id != request.user.id:
+        messages.add_message(
+            request, messages.ERROR, "You are not authorized to view this user's bookings."
+        )
+        return HttpResponseRedirect(reverse('booking_detail', args=(request.user.id, booking_id)))
+
     booking = Booking.objects.get(user_id=request.user.id, id=booking_id)
 
     journey = Journey.objects.get(booking_id=booking.id)
