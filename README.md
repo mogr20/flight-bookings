@@ -141,10 +141,10 @@ A flight bookings web app using Django and PostgreSQL
 |Homepage|Message on login|Login as user|Successful Signin message appears|yes|
 |Homepage|Message on logout|Logout|Successful SignOut message appears|yes|
 |Homepage|Flight board|Look at flights table|Shows the departures for Heathrow|yes|
-|Homepage|Flight details|Click on a flight|Shows you the flight details,<br>and passenger form|yes|
-|Homepage|Expand flight board button|Tap on the button next<br>to a flight (tablets/mobile only)|Show more details about the flight|yes|
-|Homepage|Expand flight board button|Tap on the button next<br>to an expanded flight|shrinks that info|yes|
-|Homepage|Expand flight board button|Tap on the button next<br>to a flight whilst another<br>is already expanded|shrinks previously opened flight|yes|
+|Homepage|Flight details|Click on a flight|Shows you the flight details, and passenger form|yes|
+|Homepage|Expand flight board button|Tap on the button next to a flight (tablets/mobile only)|Show more details about the flight|yes|
+|Homepage|Expand flight board button|Tap on the button next to an expanded flight|shrinks that info|yes|
+|Homepage|Expand flight board button|Tap on the button next to a flight whilst another is already expanded|shrinks previously opened flight|yes|
 |Login Page|Username validation|Enter incorrect username|Error message response - does not specify if username or password failed|yes|
 |Login Page|Password validation|Enter incorrect password|Error message response - does not specify if username or password failed|yes|
 |Login Page|Remember me button|Checkbox on|Close browser window and reopen - user still logged in|yes|
@@ -159,27 +159,27 @@ A flight bookings web app using Django and PostgreSQL
 |Flight Detail|First Name validation|leave blank|Browser requests you fill in first name field before sending form|yes|
 |Flight Detail|Last Name validation|leave blank|Browser requests you fill in last name field before sending form|yes|
 |Flight Detail|Dietary validation|Exceed max length|Error message response - dietary requirements must be shorter|no|
-|Flight Detail|Form success|Fill form, click "Book this Flight",<br>Confirm success in "My Booking"|Flight is booked with the one passenger|yes|
+|Flight Detail|Form success|Fill form, click "Book this Flight", Confirm success in "My Booking"|Flight is booked with the one passenger|yes|
 |My Booking|No Bookings|Click "My Booking" when you have no flights booked|Displays nothing, except to prompt you to make a booking|partial (empty, but no prompt)|
 |My Booking|Booking Details|Click "Booking Details" on any booking|Takes you to that correct booking|yes|
-|My Booking|Booking date order|Have multiple bookings, and go to "My Booking" page|There are multiple bookings, ordered by date<br>with most recent at the top|yes|
+|My Booking|Booking date order|Have multiple bookings, and go to "My Booking" page|There are multiple bookings, ordered by date with most recent at the top|yes|
 |My Booking|Access Control|Change the URL to another user id|You are prompted to login as the correct user for this page|no|
-|Booking Passengers|Passengers|Look at the page|The booking is the correct one, and has the passenger<br>details we submitted|yes|
+|Booking Passengers|Passengers|Look at the page|The booking is the correct one, and has the passenger details we submitted|yes|
 |Booking Passengers|Edit Passenger, first name validation|leave blank|Browser requests you fill in first name field before sending form|yes|
 |Booking Passengers|Edit Passenger, last name validation|leave blank|Browser requests you fill in last name field before sending form|yes|
 |Booking Passengers|Edit Passenger, dietary validation|Exceed max length|Error message response - dietary requirements must be shorter|no|
-|Booking Passengers|Edit Passenger|Edit the passenger details, like name or dietary, and click "Update Customer info"|Stays on same page, message to confirm change was made.<br>Can view change was successful for that passenger|yes|
+|Booking Passengers|Edit Passenger|Edit the passenger details, like name or dietary, and click "Update Customer info"|Stays on same page, message to confirm change was made. Can view change was successful for that passenger|yes|
 |Booking Passengers|Add Passenger, first name validation|leave blank|Browser requests you fill in first name field before sending form|yes|
 |Booking Passengers|Add Passenger, last name validation|leave blank|Browser requests you fill in last name field before sending form|yes|
 |Booking Passengers|Add Passenger, dietary validation|Exceed max length|Error message response - dietary requirements must be shorter|no|
-|Booking Passengers|Add Passenger|Add a new passenger|Stays on same page, message to confirm passenger was added.<br>Can view passenger was added successfully.|partial, message says "Flight Booked successfully!"|
+|Booking Passengers|Add Passenger|Add a new passenger|Stays on same page, message to confirm passenger was added. Can view passenger was added successfully.|partial, message says "Flight Booked successfully!"|
 |Booking Passengers|Delete Passenger|Cancel delete process|Passenger isn't deleted, page doesn't refresh/redirect|yes|
-|Booking Passengers|Delete Passenger|Proceed with delete process|Stays on same page, passenger is deleted, message to notify user.<br>Can see passenger is gone from booking|yes|
+|Booking Passengers|Delete Passenger|Proceed with delete process|Stays on same page, passenger is deleted, message to notify user. Can see passenger is gone from booking|yes|
 |Booking Passengers|Delete Booking|Cancel delete process|Booking isn't deleted, page doesn't refresh/redirect|yes|
-|Booking Passengers|Delete Booking|Proceed with delete process|Redirect to "My Booking", message to user to confirm delete.<br>Can see booking gone from "My Booking" page|yes|
-|Booking Passengers|Access Control|Change the URL to another booking id, but keep your user id|You are prompted to login as the correct user<br>for this page. You are never confirmed if the booking/user exists|partial, 500 error|
-|Booking Passengers|Access Control|Change the URL to another user id, but keep your booking id|You are prompted to login as the correct user<br>for this page. You are never confirmed if the booking/user exists|no|
-|Booking Passengers|Access Control|Change the URL to another user id,<br>and change to a valid booking id for that user|You are prompted to login as the correct user<br>for this page. You are never confirmed if the booking/user exists|partial, 500 error|
+|Booking Passengers|Delete Booking|Proceed with delete process|Redirect to "My Booking", message to user to confirm delete. Can see booking gone from "My Booking" page|yes|
+|Booking Passengers|Access Control|Change the URL to another booking id, but keep your user id|You are prompted to login as the correct user for this page. You are never confirmed if the booking/user exists|partial, 500 error|
+|Booking Passengers|Access Control|Change the URL to another user id, but keep your booking id|You are prompted to login as the correct user for this page. You are never confirmed if the booking/user exists|no|
+|Booking Passengers|Access Control|Change the URL to another user id, and change to a valid booking id for that user|You are prompted to login as the correct user for this page. You are never confirmed if the booking/user exists|partial, 500 error|
 
 
 [Back to Contents](#Contents)
