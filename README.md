@@ -30,7 +30,7 @@ A flight bookings web app using Django and PostgreSQL
     - [Python](#python-validation)
     - [Lighthouse](#lighthouse)
     - [Wave](#wave-accessibility-evaluation)
-  - [Manual Testing](#manual-testing)
+  - [Feature Testing](#feature-testing)
 9. [Credits](#credits)
   - [Content](#content)
 
@@ -128,7 +128,9 @@ A flight bookings web app using Django and PostgreSQL
 
 ### Wave Accessibility Evaluation
 
-## Manual Testing
+[Back to Contents](#Contents)
+
+## Feature Testing
 | Page | Feature | Action | Effect | Pass? |
 |:-----|:--------|:-------|:-------|:------|
 |Homepage|Site Logo|Click|Redirects to home page from all pages|yes|
@@ -163,7 +165,7 @@ A flight bookings web app using Django and PostgreSQL
 |My Booking|No Bookings|Click "My Booking" when you have no flights booked|Displays nothing, except to prompt you to make a booking|partial (empty, but no prompt)|
 |My Booking|Booking Details|Click "Booking Details" on any booking|Takes you to that correct booking|yes|
 |My Booking|Booking date order|Have multiple bookings, and go to "My Booking" page|There are multiple bookings, ordered by date with most recent at the top|yes|
-|My Booking|Access Control|Change the URL to another user id|You are prompted to login as the correct user for this page|no|
+|My Booking|Access Control|Change the URL to another user id|You are prompted to login as the correct user for this page|yes|
 |Booking Passengers|Passengers|Look at the page|The booking is the correct one, and has the passenger details we submitted|yes|
 |Booking Passengers|Edit Passenger, first name validation|leave blank|Browser requests you fill in first name field before sending form|yes|
 |Booking Passengers|Edit Passenger, last name validation|leave blank|Browser requests you fill in last name field before sending form|yes|
@@ -172,19 +174,16 @@ A flight bookings web app using Django and PostgreSQL
 |Booking Passengers|Add Passenger, first name validation|leave blank|Browser requests you fill in first name field before sending form|yes|
 |Booking Passengers|Add Passenger, last name validation|leave blank|Browser requests you fill in last name field before sending form|yes|
 |Booking Passengers|Add Passenger, dietary validation|Exceed max length|The text box prevents you from exceeding max length|yes|
-|Booking Passengers|Add Passenger|Add a new passenger|Stays on same page, message to confirm passenger was added. Can view passenger was added successfully.|partial, message says "Flight Booked successfully!"|
+|Booking Passengers|Add Passenger|Add a new passenger|Stays on same page, message to confirm passenger was added. Can view passenger was added successfully.|yes|
 |Booking Passengers|Delete Passenger|Cancel delete process|Passenger isn't deleted, page doesn't refresh/redirect|yes|
 |Booking Passengers|Delete Passenger|Proceed with delete process|Stays on same page, passenger is deleted, message to notify user. Can see passenger is gone from booking|yes|
 |Booking Passengers|Delete Booking|Cancel delete process|Booking isn't deleted, page doesn't refresh/redirect|yes|
 |Booking Passengers|Delete Booking|Proceed with delete process|Redirect to "My Booking", message to user to confirm delete. Can see booking gone from "My Booking" page|yes|
 |Booking Passengers|Access Control|Change the URL to another booking id, but keep your user id|You are prompted to login as the correct user for this page. You are never confirmed if the booking/user exists|partial, 500 error|
-|Booking Passengers|Access Control|Change the URL to another user id, but keep your booking id|You are prompted to login as the correct user for this page. You are never confirmed if the booking/user exists|no|
+|Booking Passengers|Access Control|Change the URL to another user id, but keep your booking id|You are prompted to login as the correct user for this page. You are never confirmed if the booking/user exists|yes|
 |Booking Passengers|Access Control|Change the URL to another user id, and change to a valid booking id for that user|You are prompted to login as the correct user for this page. You are never confirmed if the booking/user exists|partial, 500 error|
-
-
-[Back to Contents](#Contents)
-
-## Feature Testing
+|Admin|Access Control|Home page, append url with "/admin"|You are prompted to login|yes|
+|Admin|Access Control|Home page and logged in as a user, append url with "/admin"|You are prompted to login as an admin, and told your current login doesn't have the credentials|yes|
 
 [Back to Contents](#Contents)
 
