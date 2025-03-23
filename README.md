@@ -131,26 +131,30 @@ A flight bookings web app using Django and PostgreSQL
 ## Manual Testing
 | Page | Feature | Action | Effect | Pass? |
 |:-----|:--------|:-------|:-------|:------|
-|Homepage|Site Logo|Click|Redirects to home page from all pages||
-|Homepage|Logged In User Display|Log in as existing user|Username appears below navbar||
-|Homepage|Home link|Click|Redirects to home page from all pages||
-|Homepage|Logout link|Click|Redirects to confirm signout page||
-|Homepage|Confirm logout|Click 'ok'|Redirects to home page||
-|Homepage|Login link|Click|Redirects to Sign In Page||
-|Homepage|Register link|Click|Redirects to Sign Up Page||
-|Homepage|Message on login|Login as user|Successful Signin message appears||
-|Homepage|Message on logout|Logout|Successful SignOut message appears||
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
+|Homepage|Site Logo|Click|Redirects to home page from all pages|yes|
+|Homepage|Logged In User Display|Log in as existing user|Username appears below navbar|yes|
+|Homepage|Home link|Click|Redirects to home page from all pages|yes|
+|Homepage|Logout link|Click|Redirects to confirm signout page|yes|
+|Homepage|Confirm logout|Click 'ok'|Redirects to home page|yes|
+|Homepage|Login link|Click|Redirects to Sign In Page|yes|
+|Homepage|Register link|Click|Redirects to Sign Up Page|yes|
+|Homepage|Message on login|Login as user|Successful Signin message appears|yes|
+|Homepage|Message on logout|Logout|Successful SignOut message appears|yes|
+|Homepage|Flight details|Click on a flight|Shows you the flight details,<br>and passenger form|yes|
+|Homepage|Expand flight board button|Tap on the button next<br>to a flight (tablets/mobile only)|Show more details about the flight|yes|
+|Homepage|Expand flight board button|Tap on the button next<br>to an expanded flight|shrinks that info|yes|
+|Homepage|Expand flight board button|Tap on the button next<br>to a flight whilst another<br>is already expanded|shrinks previously opened flight|yes|
+|Login Page|Username validation|Enter incorrect username|Error message response - does not specify if username or password failed|yes|
+|Login Page|Password validation|Enter incorrect password|Error message response - does not specify if username or password failed|yes|
+|Login Page|Remember me button|Checkbox on|Close browser window and reopen - user still logged in|yes|
+|Login Page|Sign in button|Click|Redirects to home page, shows successful login message|yes|
+|Logout Confirm Page|Sign Out button|Click|Redirects to home page, user logged out|yes|
+|Register Page|Reroute to login page|Click "sign up" link|Redirects to login page|yes|
+|Register Page|Username validation|Try using existing username|Error message appears - 'A user with that username already exists'|yes|
+|Register Page|email validation|Entered invalid email (without '@'|Error message - 'Please enter valid email address' and registration fails|no|
+|Register Page|password1|Enter a short password|Error message - 'That password is too short'|yes|
+|Register Page|password2|Enter different password to password1 field|Error message - 'You must type the same password each time'|yes|
+|Register Page|Sign Up button|Entered valid form data|Redirects to home page - success message displayed|yes|
 
 [Back to Contents](#Contents)
 
