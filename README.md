@@ -162,7 +162,7 @@ A flight bookings web app using Django and PostgreSQL
 |Flight Detail|Last Name validation|leave blank|Browser requests you fill in last name field before sending form|yes|
 |Flight Detail|Dietary validation|Exceed max length|The text box prevents you from exceeding max length|yes|
 |Flight Detail|Form success|Fill form, click "Book this Flight", Confirm success in "My Booking"|Flight is booked with the one passenger|yes|
-|My Booking|No Bookings|Click "My Booking" when you have no flights booked|Displays nothing, except to prompt you to make a booking|partial (empty, but no prompt)|
+|My Booking|No Bookings|Click "My Booking" when you have no flights booked|Displays nothing, except to prompt you to make a booking|yes|
 |My Booking|Booking Details|Click "Booking Details" on any booking|Takes you to that correct booking|yes|
 |My Booking|Booking date order|Have multiple bookings, and go to "My Booking" page|There are multiple bookings, ordered by date with most recent at the top|yes|
 |My Booking|Access Control|Change the URL to another user id|You are prompted to login as the correct user for this page|yes|
