@@ -95,11 +95,13 @@
             {% endfor %}
         </div>
         <!-- Hide the "no bookings" message if we successfully found a booking -->
+        {% if forloop.counter0 == 0 %}
         <style>
             #no-bookings-header, #no-bookings-paragraph {
                 display: none;
             }
         </style>
+        {% endif %}
         <!-- end bookings loop -->
         {% endfor %}
     </div>
