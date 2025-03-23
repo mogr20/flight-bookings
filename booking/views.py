@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from .models import Flight, Journey, Booking, Passenger
-from .forms import NewBookingPassengerForm
+from .forms import PassengerForm
 
 # Create your views here.
 class HomePage(generic.ListView):
@@ -24,7 +24,7 @@ def flight_detail(request, flight_id):
 
     if request.method == 'POST':
         # Handles passenger form, and creating a new booking
-        passenger_form = NewBookingPassengerForm(data=request.POST)
+        passenger_form = PassengerForm(data=request.POST)
         if passenger_form.is_valid():
             passenger = passenger_form.save(commit=False)
 
@@ -45,7 +45,7 @@ def flight_detail(request, flight_id):
         else:
             print("bookingform.errors", passenger_form.errors)
 
-    passenger_form = NewBookingPassengerForm()
+    passenger_form = PassengerForm()
 
     return render(request, 'booking/flight_detail.html', {
         "flight": flight,
@@ -82,7 +82,7 @@ def booking_detail(request, user_id, booking_id):
 
     if request.method == 'POST':
         # Handles passenger form, and creating a new booking
-        passenger_form = NewBookingPassengerForm(data=request.POST)
+        passenger_form = PassengerForm(data=request.POST)
         if passenger_form.is_valid():
             passenger = passenger_form.save(commit=False)
 
@@ -97,7 +97,7 @@ def booking_detail(request, user_id, booking_id):
         else:
             print("bookingform.errors", passenger_form.errors)
 
-    passenger_form = NewBookingPassengerForm()
+    passenger_form = PassengerForm()
 
     return render(request, 'booking/booking_passengers.html', {
         "booking": booking,
@@ -137,7 +137,7 @@ def edit_passenger(request, user_id, booking_id, passenger_id):
     """
     passenger = get_object_or_404(Passenger, pk=passenger_id)
     booking = get_object_or_404(Booking, pk=booking_id)
-    passenger_form = NewBookingPassengerForm(data=request.POST, instance=passenger)
+    passenger_form = PassengerForm(data=request.POST, instance=passenger)
 
     if booking.user_id.id == request.user.id and passenger_form.is_valid():
         passenger_form.save()
