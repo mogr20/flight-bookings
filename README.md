@@ -23,14 +23,14 @@ A flight bookings web app using Django and PostgreSQL
   - [Heroku deployment](#heroku-deployment)
 7. [Technologies Used](#technologies-used)
 8. [Testing](#testing)
-  - [Validator testing](#validator-testing)
+  - [Validator Testing](#validator-testing)
     - [HTML](#html)
     - [CSS](#css)
     - [JavaScript](#javascript)
     - [Python](#python-validation)
     - [Lighthouse](#lighthouse)
     - [Wave](#wave-accessibility-evaluation)
-  - 
+  - [Manual Testing](#manual-testing)
 9. [Credits](#credits)
   - [Content](#content)
 
@@ -127,6 +127,30 @@ A flight bookings web app using Django and PostgreSQL
 ### LightHouse
 
 ### Wave Accessibility Evaluation
+
+## Manual Testing
+| Page | Feature | Action | Effect | Pass? |
+|:-----|:--------|:-------|:-------|:------|
+|Homepage|Site Logo|Click|Redirects to home page from all pages||
+|Homepage|Logged In User Display|Log in as existing user|Username appears below navbar||
+|Homepage|Home link|Click|Redirects to home page from all pages||
+|Homepage|Logout link|Click|Redirects to confirm signout page||
+|Homepage|Confirm logout|Click 'ok'|Redirects to home page||
+|Homepage|Login link|Click|Redirects to Sign In Page||
+|Homepage|Register link|Click|Redirects to Sign Up Page||
+|Homepage|Message on login|Login as user|Successful Signin message appears||
+|Homepage|Message on logout|Logout|Successful SignOut message appears||
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
 
 [Back to Contents](#Contents)
 
