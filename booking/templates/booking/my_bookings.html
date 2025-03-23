@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 {% load static %}
+{% url 'home' as home_url %}
 {% block content %}
 <!-- content starts here -->
 
 <div class="container-fluid">
     <div class="row">
-        {% if user.is_authenticated %}
+        <h3 id="no-bookings-header">No Bookings available</h3>
+        <p id="no-bookings-paragraph">You haven't booked a flight yet. <a href="{% url 'home' %}">Click here</a> to view all available flights.</p>
         {% for booking in booking_list %}
         <h3>
             <div class="col-12 col-md-6">Booking for: </div>
@@ -92,11 +94,14 @@
             {% endif %}
             {% endfor %}
         </div>
+        <!-- Hide the "no bookings" message if we successfully found a booking -->
+        <style>
+            #no-bookings-header, #no-bookings-paragraph {
+                display: none;
+            }
+        </style>
         <!-- end bookings loop -->
         {% endfor %}
-        {% else %}
-        <p>Error: Couldn't access your bookings.</p>
-        {% endif %}
     </div>
 </div>
 
