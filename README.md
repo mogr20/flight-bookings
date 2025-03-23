@@ -151,10 +151,15 @@ A flight bookings web app using Django and PostgreSQL
 |Logout Confirm Page|Sign Out button|Click|Redirects to home page, user logged out|yes|
 |Register Page|Reroute to login page|Click "sign up" link|Redirects to login page|yes|
 |Register Page|Username validation|Try using existing username|Error message appears - 'A user with that username already exists'|yes|
-|Register Page|email validation|Entered invalid email (without '@'|Error message - 'Please enter valid email address' and registration fails|no|
+|Register Page|email validation|Entered invalid email (without '@')|Error message - 'Please enter valid email address' and registration fails|no, null email was permitted|
 |Register Page|password1|Enter a short password|Error message - 'That password is too short'|yes|
 |Register Page|password2|Enter different password to password1 field|Error message - 'You must type the same password each time'|yes|
 |Register Page|Sign Up button|Entered valid form data|Redirects to home page - success message displayed|yes|
+|Flight Detail|First Name validation|leave blank|Browser requests you fill in first name field before sending form|yes|
+|Flight Detail|Last Name validation|leave blank|Browser requests you fill in last name field before sending form|yes|
+|Flight Detail|Dietary validation|Exceed max length|Error message response - dietary requirements must be shorter|no|
+|Flight Detail|Form success|Fill form, click "Book this Flight",<br>Confirm success in "My Booking"|Flight is booked with the one passenger|yes|
+
 
 [Back to Contents](#Contents)
 
