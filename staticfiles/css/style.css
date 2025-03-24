@@ -43,8 +43,9 @@ h3 {
 }
 
 .nav-item .nav-link {
+    font-family: var(--primary-font);
     font-size: 18px;
-    font-weight: 500px;
+    font-weight: 400px;
 }
 
 .nav-item .active {
