@@ -82,7 +82,7 @@ main {
 }
 
 /* index.html */
-button.expand-btn {
+.expand-btn {
     font-size: 16px;
     color: var(--light-highlight-color);
     background-color: var(--secondary-color);
