@@ -95,6 +95,8 @@ A flight bookings web app using Django and PostgreSQL
 
 # Database Schema - Entity Relationship Diagram
 
+![database schema](https://github.com/user-attachments/assets/7387a8df-bba4-49c6-ade6-b51fc522a6a3)
+
 [Back to Contents](#Contents)
 
 # Agile Methodologies - Project Management
