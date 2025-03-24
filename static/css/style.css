@@ -17,6 +17,8 @@
     --black-color: #031d35;
     /* blue-black */
     --lighter-black-color: #0d2c4d;
+    /* link hover color */
+    --link-color: #660000;
 }
 
 /* global styles */
@@ -99,6 +101,11 @@ main {
 
 .flight-info {
     color: var(--lighter-black-color);
+}
+
+/* login/signup */
+.link {
+    color: var(--link-color);
 }
 
 /* Table styling, index.html and my_bookings.html */
