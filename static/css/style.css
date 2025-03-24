@@ -16,6 +16,7 @@
     /* cloud white-blue */
     --black-color: #031d35;
     /* blue-black */
+    --lighter-black-color: #0d2c4d;
 }
 
 /* global styles */
@@ -32,8 +33,8 @@ h1, h2 {
 }
 
 h3 {
-    color: var(--highlight-color);
     font-size: 22px;
+    color: var(--lighter-black-color);
 }
 
 /* base.html */
