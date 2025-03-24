@@ -25,14 +25,13 @@ const deleteConfirm = document.getElementById('deleteConfirm');
 */
 for (let button of deleteButtons) {
     button.addEventListener("click", (e) => {
-        let userId = e.target.getAttribute("data-user_id");
         // If the delete button is a passenger delete button
         if (e.target.hasAttribute("data-passenger_id")) {
             let passengerId = e.target.getAttribute("data-passenger_id");
             let bookingId = e.target.getAttribute("data-booking_id");
             deleteBody.innerText = "Are you sure you want to remove this passenger?\nThis action cannot be undone.";
             deleteTitle.innerText = "Remove Passenger?";
-            deleteConfirm.href = `/user/${userId}/booking/${bookingId}/remove_passenger/${passengerId}/`;
+            deleteConfirm.href = `/user/booking/${bookingId}/remove_passenger/${passengerId}/`;
             deleteConfirm.innerText = "Remove Passenger";
             deleteModal.show();
         }
@@ -41,7 +40,7 @@ for (let button of deleteButtons) {
             let journeyId = e.target.getAttribute("data-journey_id");
             deleteBody.innerText = "Are you sure you want to remove this booking?\nThis action cannot be undone."
             deleteTitle.innerText = "Remove Booking?";
-            deleteConfirm.href = `/user/${userId}/journey/${journeyId}/remove/`;
+            deleteConfirm.href = `/user/journey/${journeyId}/remove/`;
             deleteConfirm.innerText = "Remove";
             deleteModal.show();
         }

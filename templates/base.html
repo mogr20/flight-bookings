@@ -37,20 +37,12 @@
                         <a class="nav-link {% if request.path == home_url %}active" aria-current="page{% endif %}"
                             href="{% url 'home' %}">Home</a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="#intro">Intro</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#tips">Tips</a>
-                    </li> -->
                     {% if user.is_authenticated %}
-                    {% url 'my_bookings' user.id as my_booking_url %}
+                    {% url 'my_bookings' as my_booking_url %}
                     <li class="nav-item">
                         <!-- We are setting the nav as active if we are in my_bookings.html and booking_passengers.html -->
                         <a class="nav-link {% if my_booking_url in request.path %}active"
-                            aria-current="page{% endif %}" href="{% url 'my_bookings' user.id %}">My Booking</a>
-                        <!-- request.path.contains -->
-                        <!-- check middleware requirements for request.resolver_match and check documentation -->
+                            aria-current="page{% endif %}" href="{% url 'my_bookings' %}">My Booking</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == logout_url %}active" aria-current="page{% endif %}"
@@ -85,21 +77,6 @@
             </div>
         </div>
     </div>
-    <!-- <div class="toast-container position-static translate-middle-x">
-        {% for message in messages %}
-        <div class="toast {{ message.tags }}" role="alert" aria-live="assertive" aria-atomic="true"
-            data-bs-autohide="true" data-bs-delay="5000" data-bs-animation="true">
-            <div class="toast-header">
-                <strong class="me-auto">Flight Booking</strong>
-                <small class="text-body-secondary">{{ message.tags }}</small>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body">
-                {{ message | safe }}
-            </div>
-        </div>
-        {% endfor %}
-    </div> -->
 
     <main class="flex-shrink-0">
         {% if user.is_authenticated %}

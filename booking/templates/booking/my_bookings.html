@@ -10,7 +10,7 @@
         <p id="no-bookings-paragraph">You haven't booked a flight yet. <a href="{% url 'home' %}">Click here</a> to view all available flights.</p>
         {% for booking in booking_list %}
         <h2>Booking for: {{ booking.booking_date }}</h2>
-        <a class="btn btn-info" href="{% url 'booking_detail' user.id booking.id %}">Booking Details</a>
+        <a class="btn btn-info" href="{% url 'booking_detail' booking.id %}">Booking Details</a>
         <div class="container text-left">
             <!-- add if statements to adjust cols for departures vs arrivals -->
             <div class="row row-cols-7 row-cols-md-8 row-cols-lg-9 row-cols-xl-10" id="table-header">

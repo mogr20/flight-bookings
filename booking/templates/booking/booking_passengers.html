@@ -17,8 +17,7 @@
         <!-- Same as previously, except now its the expected arrival time -->
         <div class="col-12 col-sm-6 col-lg-4"><strong>Arrival Time: </strong>{{ flight.arrival_expected_time|time:"H:i" }}</div>
         <div class="col-12 col-sm-6 col-lg-4"><strong>Status: </strong>{{ flight.status }}</div>
-        <button class="btn btn-danger btn-delete" data-journey_id="{{ journey.id }}"
-                    data-user_id="{{ user.id }}">Remove Booking</button>
+        <button class="btn btn-danger btn-delete" data-journey_id="{{ journey.id }}">Remove Booking</button>
         <div id="passengerAccordion" class="accordion col-lg-6">
             {% for passenger in passenger_list %}
             <div class="accordion-item">
@@ -37,11 +36,11 @@
                         <p>Baggage: <span id="baggage_{{ passenger.id }}">
                                 {{ passenger.baggage_weight }}</span></p>
                         <p>Dietary Requirements: <span id="dietary_{{ passenger.id }}">
-                                {{ passenger.dietary_requirements }}</span></p>
+                                {{ passenger.dietary_requirements | linebreaks }}</span></p>
                         <button class="btn btn-warning btn-edit" data-passenger_id="{{ passenger.id }}"
                             data-booking_id="{{ booking.id }}">Edit Passenger Details</button>
                         <button class="btn btn-danger btn-delete" data-passenger_id="{{ passenger.id }}"
-                            data-user_id="{{ user.id }}" data-booking_id="{{ booking.id }}">Delete Passenger</button>
+                            data-booking_id="{{ booking.id }}">Delete Passenger</button>
                     </div>
                 </div>
             </div>

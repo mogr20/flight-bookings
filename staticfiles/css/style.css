@@ -36,15 +36,7 @@ h3 {
     font-size: 22px;
 }
 
-button.expand-btn {
-    font-size: 12px;
-    background-color: var(--secondary-color);
-    /* height 2px, width 14px */
-    border-color: var(--secondary-color);
-    padding: 7px 12px;
-    border-radius: 20%;
-}
-
+/* base.html */
 #navbar {
     background-color: var(--secondary-color);
 }
@@ -65,7 +57,17 @@ main {
     margin-bottom: 1rem;
 }
 
-/* Table styling */
+/* index.html */
+button.expand-btn {
+    font-size: 12px;
+    background-color: var(--secondary-color);
+    /* height 2px, width 14px */
+    border-color: var(--secondary-color);
+    padding: 7px 12px;
+    border-radius: 20%;
+}
+
+/* Table styling, index.html and my_bookings.html */
 #table-header {
     border-top: 1px solid gray;
     border-bottom: 1px solid gray;
@@ -74,7 +76,6 @@ main {
 
 #table-header div {
     padding-top: 4px;
-    /* border-right: 1px solid gray; */
 }
 
 .table-row:hover:not(:has(.expand-btn:hover)) {
@@ -87,7 +88,6 @@ main {
 
 .table-row div, .booking-row div {
     padding-bottom: 2px;
-    /* border-right: 1px solid gray; */
 } 
 
 .table-row-odd {
