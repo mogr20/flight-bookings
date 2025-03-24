@@ -69,6 +69,10 @@ button.expand-btn {
     border-radius: 20%;
 }
 
+.flight-info {
+    color: var(--lighter-black-color);
+}
+
 /* Table styling, index.html and my_bookings.html */
 #table-header {
     border-top: 1px solid gray;

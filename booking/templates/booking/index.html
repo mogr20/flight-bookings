@@ -33,7 +33,7 @@
             </div>
             <!-- loop through the flights, using the include insert the flight row -->
             {% for flight in flight_list %}
-            <a href="{% url 'flight_detail' flight.id %}">
+            <a class="flight-info" href="{% url 'flight_detail' flight.id %}">
                 <div class="row row-cols-7 row-cols-md-9 row-cols-xl-10
                     table-row {% if forloop.counter0|divisibleby:2 %}table-row-odd{% else %}table-row-even{% endif %}">
                     <div class="col-4 col-md-4 col-lg-3">{{ flight.arrival_airport.city }}</div>
