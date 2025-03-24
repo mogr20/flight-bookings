@@ -1,4 +1,3 @@
-const bookingForm = document.getElementById('bookingForm');
 const formFirstName = document.getElementById('id_first_name');
 const formLastName = document.getElementById('id_last_name');
 const formBaggage = document.getElementById('id_baggage_weight');

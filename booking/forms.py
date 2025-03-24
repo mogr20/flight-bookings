@@ -9,12 +9,13 @@ class PassengerForm(forms.ModelForm):
     class Meta:
         model = Passenger
         fields = ('first_name', 'last_name', 'dietary_requirements',
-            'baggage_weight',)
+                  'baggage_weight',)
 
 
 class JourneyForm(forms.ModelForm):
     """
-    Form class for a user to add a flight to their journey, which is linked to their booking
+    Form class for a user to add a flight to their journey,
+    which is linked to their booking
     """
     class Meta:
         model = Journey

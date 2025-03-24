@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import Booking, Passenger, Airport, Flight, Seat, Journey
 
+
 # Register your models here.
 @admin.register(Booking)
 class BookingAdmin(admin.ModelAdmin):
@@ -28,14 +29,17 @@ class AirportAdmin(admin.ModelAdmin):
 
 @admin.register(Flight)
 class FlightAdmin(admin.ModelAdmin):
-    list_display = ('flight_number', 'airline', 'scheduled_time', 'expected_time',
-        'departure_airport', 'arrival_scheduled_time', 'arrival_expected_time',
-        'arrival_airport', 'status', 'terminal', 'gate')
-    search_fields = ('flight_number', 'airline', 'scheduled_time', 'expected_time',
-        'departure_airport', 'arrival_scheduled_time', 'arrival_expected_time',
-        'arrival_airport', 'status', 'terminal', 'gate',)
-    list_filter = ('flight_number', 'airline', 'status', 'terminal', 'gate',
-        'arrival_airport', 'departure_airport')
+    list_display = ('flight_number', 'airline', 'scheduled_time',
+                    'expected_time', 'departure_airport',
+                    'arrival_scheduled_time', 'arrival_expected_time',
+                    'arrival_airport', 'status', 'terminal', 'gate')
+    search_fields = ('flight_number', 'airline', 'scheduled_time',
+                     'expected_time', 'departure_airport',
+                     'arrival_scheduled_time', 'arrival_expected_time',
+                     'arrival_airport', 'status', 'terminal', 'gate',)
+    list_filter = ('flight_number', 'airline', 'status', 'terminal',
+                   'gate', 'arrival_airport', 'departure_airport')
+
     def save_model(self, request, obj, form, change):
         if not obj.expected_time:
             obj.expected_time = obj.scheduled_time
@@ -46,6 +50,8 @@ class FlightAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Seat)
+
+
 @admin.register(Journey)
 class JourneyAdmin(admin.ModelAdmin):
     list_display = ('id', 'booking_id', 'flight_id',)

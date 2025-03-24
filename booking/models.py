@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 # Create your models here.
 class Booking(models.Model):
     """
@@ -24,7 +25,8 @@ class Passenger(models.Model):
     )
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    dietary_requirements = models.TextField(default="", blank=True, max_length=500)
+    dietary_requirements = models.TextField(
+        default="", blank=True, max_length=500)
     baggage_weight = models.CharField(
         default="None",
         blank=True,
@@ -38,7 +40,10 @@ class Passenger(models.Model):
     )
 
     def __str__(self):
-        return f"{self.last_name}, {self.first_name} - {self.booking_id.user_id.username}"
+        return (
+            f"{self.last_name}, {self.first_name}"
+            f" - {self.booking_id.user_id.username}"
+        )
 
 
 class Airport(models.Model):
@@ -70,10 +75,16 @@ class Flight(models.Model):
     terminal = models.CharField(max_length=20, blank=True)
     gate = models.CharField(max_length=20, blank=True)
     arrival_airport = models.ForeignKey(
-        Airport, on_delete=models.SET_NULL, null=True, related_name='arrival_airport'
+        Airport,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='arrival_airport'
     )
     departure_airport = models.ForeignKey(
-        Airport, on_delete=models.SET_NULL, null=True, related_name='departure_airport'
+        Airport,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='departure_airport'
     )
 
     def __str__(self):
@@ -110,7 +121,9 @@ class Flight_Seat(models.Model):
     )
 
     def __str__(self):
-        return f"{self.seat_id.seat_number} - {self.booking_id.user_id.username}"
+        return (
+            f"{self.seat_id.seat_number} - {self.booking_id.user_id.username}"
+        )
 
 
 class Journey(models.Model):
@@ -126,4 +139,7 @@ class Journey(models.Model):
     layover_duration = models.TimeField(default=None, blank=True, null=True)
 
     def __str__(self):
-        return f"{self.flight_id.flight_number} - {self.booking_id.user_id.username}"
+        return (
+            f"{self.flight_id.flight_number}"
+            f" - {self.booking_id.user_id.username}"
+        )

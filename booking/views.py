@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Flight, Journey, Booking, Passenger
 from .forms import PassengerForm
 
+
 # Create your views here.
 class HomePage(generic.ListView):
     """
@@ -43,7 +44,8 @@ def flight_detail(request, flight_id):
                 request, messages.SUCCESS, 'Flight Booked successfully!'
             )
             messages.add_message(
-                request, messages.INFO, 'You can go to "My Booking" to add more passengers.'
+                request, messages.INFO,
+                'You can go to "My Booking" to add more passengers.'
             )
         else:
             print("bookingform.errors", passenger_form.errors)
@@ -55,13 +57,15 @@ def flight_detail(request, flight_id):
         "passenger_form": passenger_form,
     })
 
+
 @login_required
 def all_my_bookings(request):
     """
     Displays all of the user's bookings, and flights associated with them.
     """
     print("in bookings")
-    bookings = Booking.objects.filter(user_id=request.user.id).order_by('-booking_date')
+    bookings = Booking.objects.filter(user_id=request.user.id).order_by(
+        '-booking_date')
 
     journeys = Journey.objects.filter(booking_id__in=bookings)
     flight_list = Flight.objects.filter(id__in=journeys.values('flight_id'))
@@ -72,15 +76,18 @@ def all_my_bookings(request):
         "flight_list": flight_list,
     })
 
+
 @login_required
 def booking_detail(request, booking_id):
     """
-    Displays a specific booking, flights associated with it, and customers associated with it.
+    Displays a specific booking, flights associated with it,
+    and customers associated with it.
     """
     booking = get_object_or_404(Booking, pk=booking_id)
     if booking.user_id.id != request.user.id:
         messages.add_message(
-            request, messages.ERROR, "You are not authorized to view this booking."
+            request, messages.ERROR,
+            "You are not authorized to view this booking."
         )
         return HttpResponseRedirect(reverse('my_bookings'))
 
@@ -100,7 +107,8 @@ def booking_detail(request, booking_id):
 
             # Success message
             messages.add_message(
-                request, messages.SUCCESS, 'Passenger added to Booking successfully!'
+                request, messages.SUCCESS,
+                'Passenger added to Booking successfully!'
             )
         else:
             print("bookingform.errors", passenger_form.errors)
@@ -115,6 +123,7 @@ def booking_detail(request, booking_id):
         "passenger_form": passenger_form,
     })
 
+
 @login_required
 def my_journey_delete(request, journey_id):
     """
@@ -125,18 +134,21 @@ def my_journey_delete(request, journey_id):
 
     if booking.user_id.id != request.user.id:
         messages.add_message(
-            request, messages.ERROR, "You are not authorized to delete this booking."
+            request, messages.ERROR,
+            "You are not authorized to delete this booking."
         )
         return HttpResponseRedirect(reverse('my_bookings'))
 
     journey.delete()
-    # for now, we delete the booking too, as we only have one flight per booking
+    # for now, we delete the booking too,
+    # as we only have one flight per booking
     booking.delete()
     messages.add_message(
         request, messages.SUCCESS, "Flight Booking removed."
     )
 
     return HttpResponseRedirect(reverse('my_bookings'))
+
 
 @login_required
 def edit_passenger(request, booking_id, passenger_id):
@@ -158,10 +170,12 @@ def edit_passenger(request, booking_id, passenger_id):
         print("passenger_form.errors", passenger_form.errors)
     else:
         messages.add_message(
-            request, messages.ERROR, "You are not authorized to edit this booking's passenger."
+            request, messages.ERROR,
+            "You are not authorized to edit this booking's passenger."
         )
 
     return HttpResponseRedirect(reverse('booking_detail', args=[booking_id]))
+
 
 @login_required
 def delete_passenger(request, booking_id, passenger_id):
@@ -178,7 +192,8 @@ def delete_passenger(request, booking_id, passenger_id):
         )
     else:
         messages.add_message(
-            request, messages.ERROR, "You are not authorized to remove this user's passenger."
+            request, messages.ERROR,
+            "You are not authorized to remove this user's passenger."
         )
 
     return HttpResponseRedirect(reverse('booking_detail', args=[booking_id]))
