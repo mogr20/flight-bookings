@@ -1,14 +1,22 @@
 # Flight Bookings
 A flight bookings web app using Django and PostgreSQL
 
+![flight app on all devices](https://github.com/user-attachments/assets/ddf52129-e8d9-49ba-8f61-9d39c713b959)
+
+[Back to Contents](#Contents)
+
 ## Live deployment
+[Flight Booking](https://mogr-flight-booking-fe5c31fca0d1.herokuapp.com/)
 
 ## Product Goals
+
+[Back to Contents](#Contents)
 
 ## Contents
 
 1. [Flight Bookings](#flight-bookings)
-  - 
+  - [Live Deployment](#live-deployment)
+  - [Product Goals](#product-goals)
 2. [UX/UI](#ux---user-experience)
   - 
 3. [Features](#features)
@@ -38,6 +46,8 @@ A flight bookings web app using Django and PostgreSQL
 
 
 # UX - User Experience
+
+![User Flow](https://github.com/user-attachments/assets/5a965c7f-f6d3-4d28-a1c6-e981218acf29)
 
 ## User Stories
 
@@ -133,10 +143,20 @@ https://jsvalidator.com/
 ### Python
 
 ### LightHouse
+Above 80 in performance on mobile and across the whole site.
+
+![index homepage](https://github.com/user-attachments/assets/c82b35b3-6034-4361-b254-17efb28442f2)
+![flight detail page](https://github.com/user-attachments/assets/f9da499e-bdf4-40cf-8c50-b8c2f5cd8a82)
+![my bookings page](https://github.com/user-attachments/assets/598fdf46-11d1-42de-a1db-86a60424cb6a)
+![booking passenger detail page](https://github.com/user-attachments/assets/8cec76ee-cc51-49cd-a2ef-3c757670d622)
+
+[Back to Contents](#Contents)
 
 ### Wave Accessibility Evaluation
 Passed
 https://wave.webaim.org/
+
+![WAVE](https://github.com/user-attachments/assets/7b8e826c-a63e-4b68-97ed-db721b7ca170)
 
 [Back to Contents](#Contents)
 
