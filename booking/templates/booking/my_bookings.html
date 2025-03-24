@@ -6,8 +6,8 @@
 
 <div class="container-fluid">
     <div class="row">
-        <h2 id="no-bookings-header">No Bookings available</h2>
-        <p id="no-bookings-paragraph">You haven't booked a flight yet. <a href="{% url 'home' %}">Click here</a> to view all available flights.</p>
+        <h2 id="no-bookings-header" style="display: block;">No Bookings available</h2>
+        <p id="no-bookings-paragraph" style="display: block;">You haven't booked a flight yet. <a href="{% url 'home' %}">Click here</a> to view all available flights.</p>
         {% for booking in booking_list %}
         <h2>Booking for: {{ booking.booking_date }}</h2>
         <a class="btn btn-info" href="{% url 'booking_detail' booking.id %}">Booking Details</a>
@@ -93,11 +93,10 @@
         </div>
         <!-- Hide the "no bookings" message if we successfully found a booking -->
         {% if forloop.counter0 == 0 %}
-        <style>
-            #no-bookings-header, #no-bookings-paragraph {
-                display: none;
-            }
-        </style>
+        <script>
+            document.getElementById("no-bookings-header").style.display = "none";
+            document.getElementById("no-bookings-paragraph").style.display = "none";
+        </script>
         {% endif %}
         <!-- end bookings loop -->
         {% endfor %}

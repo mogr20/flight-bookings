@@ -59,11 +59,12 @@ main {
 
 /* index.html */
 button.expand-btn {
-    font-size: 12px;
+    font-size: 16px;
     background-color: var(--secondary-color);
-    /* height 2px, width 14px */
+    border: 1px;
     border-color: var(--secondary-color);
-    padding: 7px 12px;
+    margin-top: 2px;
+    padding: 0px 10px;
     border-radius: 20%;
 }
 
