@@ -119,14 +119,20 @@ A flight bookings web app using Django and PostgreSQL
 ### HTML
 
 ### CSS
+Passed
+https://jigsaw.w3.org/css-validator/
 
 ### JavaScript
+Passed
+https://jsvalidator.com/
 
 ### Python
 
 ### LightHouse
 
 ### Wave Accessibility Evaluation
+Passed
+https://wave.webaim.org/
 
 [Back to Contents](#Contents)
 
