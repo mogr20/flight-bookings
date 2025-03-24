@@ -35,8 +35,9 @@
                     <div class="accordion-body">
                         <p>Baggage: <span id="baggage_{{ passenger.id }}">
                                 {{ passenger.baggage_weight }}</span></p>
-                        <p>Dietary Requirements: <span id="dietary_{{ passenger.id }}">
-                                {{ passenger.dietary_requirements | linebreaks }}</span></p>
+                        <p>Dietary Requirements:</p>
+                        <div id="dietary_{{ passenger.id }}">
+                            {{ passenger.dietary_requirements | linebreaks }}</div>
                         <button class="btn btn-warning btn-edit" data-passenger_id="{{ passenger.id }}"
                             data-booking_id="{{ booking.id }}">Edit Passenger Details</button>
                         <button class="btn btn-danger btn-delete" data-passenger_id="{{ passenger.id }}"

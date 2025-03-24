@@ -2,8 +2,22 @@ from django.contrib import admin
 from .models import Booking, Passenger, Airport, Flight, Seat, Journey
 
 # Register your models here.
-admin.site.register(Booking)
-admin.site.register(Passenger)
+@admin.register(Booking)
+class BookingAdmin(admin.ModelAdmin):
+    list_display = ('id', 'user_id', 'booking_date')
+    search_fields = ('id', 'user_id',)
+    list_filter = ('user_id',)
+    ordering = ('-booking_date',)
+
+
+@admin.register(Passenger)
+class PassengerAdmin(admin.ModelAdmin):
+    list_display = ('first_name', 'last_name', 'booking_id', 'baggage_weight')
+    search_fields = ('first_name', 'last_name', 'booking_id',)
+    list_filter = ('booking_id', 'baggage_weight',)
+    ordering = ('last_name',)
+
+
 @admin.register(Airport)
 class AirportAdmin(admin.ModelAdmin):
     list_display = ('airport_code', 'airport_name', 'city', 'country')
@@ -32,4 +46,9 @@ class FlightAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Seat)
-admin.site.register(Journey)
+@admin.register(Journey)
+class JourneyAdmin(admin.ModelAdmin):
+    list_display = ('id', 'booking_id', 'flight_id',)
+    search_fields = ('booking_id', 'flight_id',)
+    list_filter = ('booking_id', 'flight_id',)
+    ordering = ('-booking_id',)

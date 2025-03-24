@@ -12,7 +12,7 @@ class Booking(models.Model):
     )
 
     def __str__(self):
-        return f"{self.booking_date} - {self.user_id.username}"
+        return f"{self.id} - {self.user_id.username} - {self.booking_date}"
 
 
 class Passenger(models.Model):
@@ -38,7 +38,7 @@ class Passenger(models.Model):
     )
 
     def __str__(self):
-        return f"{self.last_name}, {self.first_name}"
+        return f"{self.last_name}, {self.first_name} - {self.booking_id.user_id.username}"
 
 
 class Airport(models.Model):
