@@ -6,10 +6,11 @@
 
 <div class="container-fluid">
     <div class="row">
-        <h2 id="no-bookings-header" style="display: block;">No Bookings available</h2>
+        <h1 class="h2">Your Bookings</h1>
+        <h2 id="no-bookings-header" style="display: block;" class="h3">No Bookings available</h2>
         <p id="no-bookings-paragraph" style="display: block;">You haven't booked a flight yet. <a href="{% url 'home' %}">Click here</a> to view all available flights.</p>
         {% for booking in booking_list %}
-        <h2>Booking for: {{ booking.booking_date }}</h2>
+        <h2 class="h3">Booking for: {{ booking.booking_date }}</h2>
         <a class="btn btn-info" href="{% url 'booking_detail' booking.id %}">Booking Details</a>
         <div class="container text-left">
             <!-- add if statements to adjust cols for departures vs arrivals -->
