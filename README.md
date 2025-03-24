@@ -31,7 +31,9 @@ A flight bookings web app using Django and PostgreSQL
     - [Lighthouse](#lighthouse)
     - [Wave](#wave-accessibility-evaluation)
   - [Feature Testing](#feature-testing)
-9. [Credits](#credits)
+9. [Use of AI](#use-of-ai)
+  - 
+10. [Credits](#credits)
   - [Content](#content)
 
 
@@ -190,6 +192,29 @@ https://wave.webaim.org/
 |Booking Passengers|Access Control|Change the URL to another user id, and change to a valid booking id for that user|You are prompted to login as the correct user for this page. You are never confirmed if the booking/user exists|yes, 404|
 |Admin|Access Control|Home page, append url with "/admin"|You are prompted to login|yes|
 |Admin|Access Control|Home page and logged in as a user, append url with "/admin"|You are prompted to login as an admin, and told your current login doesn't have the credentials|yes|
+
+[Back to Contents](#Contents)
+
+# Use of AI
+1. General Debugging Assistance
+Issue: Various layout and alignment issues in the app.
+Steps Taken:
+Provided debugging steps using browser developer tools to inspect applied styles.
+Suggested isolating the issue with a simplified test case to identify conflicts.
+2. Django-Specific Assistance
+Issue: Redirecting to a view with reverse caused a TypeError due to incorrect arguments.
+Steps Taken:
+Corrected the reverse function call by wrapping the booking_id in a list or tuple to ensure it was iterable.
+3. Code and Style Improvements
+HTML:
+Ensured proper structure for the accordion button and its child elements.
+Used Bootstrap utility classes (d-flex, ms-1, align-items-center) for consistent styling.
+CSS:
+
+4. Collaboration and Iteration
+Approach:
+Asked targeted questions to gather context and debug effectively.
+Iteratively refined solutions based on your feedback and testing results.
 
 [Back to Contents](#Contents)
 
