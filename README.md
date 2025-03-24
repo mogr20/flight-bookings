@@ -179,9 +179,9 @@ A flight bookings web app using Django and PostgreSQL
 |Booking Passengers|Delete Passenger|Proceed with delete process|Stays on same page, passenger is deleted, message to notify user. Can see passenger is gone from booking|yes|
 |Booking Passengers|Delete Booking|Cancel delete process|Booking isn't deleted, page doesn't refresh/redirect|yes|
 |Booking Passengers|Delete Booking|Proceed with delete process|Redirect to "My Booking", message to user to confirm delete. Can see booking gone from "My Booking" page|yes|
-|Booking Passengers|Access Control|Change the URL to another booking id, but keep your user id|You are prompted to login as the correct user for this page. You are never confirmed if the booking/user exists|partial, 500 error|
+|Booking Passengers|Access Control|Change the URL to another booking id, but keep your user id|You are prompted to login as the correct user for this page. You are never confirmed if the booking/user exists|yes, 404|
 |Booking Passengers|Access Control|Change the URL to another user id, but keep your booking id|You are prompted to login as the correct user for this page. You are never confirmed if the booking/user exists|yes|
-|Booking Passengers|Access Control|Change the URL to another user id, and change to a valid booking id for that user|You are prompted to login as the correct user for this page. You are never confirmed if the booking/user exists|partial, 500 error|
+|Booking Passengers|Access Control|Change the URL to another user id, and change to a valid booking id for that user|You are prompted to login as the correct user for this page. You are never confirmed if the booking/user exists|yes, 404|
 |Admin|Access Control|Home page, append url with "/admin"|You are prompted to login|yes|
 |Admin|Access Control|Home page and logged in as a user, append url with "/admin"|You are prompted to login as an admin, and told your current login doesn't have the credentials|yes|
 
