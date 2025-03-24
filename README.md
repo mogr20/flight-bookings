@@ -119,6 +119,8 @@ A flight bookings web app using Django and PostgreSQL
 ## Validator Testing 
 
 ### HTML
+Passed
+https://validator.w3.org/nu/
 
 ### CSS
 Passed
