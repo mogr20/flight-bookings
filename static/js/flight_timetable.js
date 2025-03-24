@@ -23,6 +23,7 @@ for (let button of expandButtons) {
         // If we are clicking a flight info button that is already open, close it
         if (flightDiv.style.display === "block") {
             flightDiv.style.display = "none";
+            button.innerText = "+";
             return;
         }
 
@@ -31,7 +32,14 @@ for (let button of expandButtons) {
             flight.style.display = "none";
         }
 
+        // Change all expand button text to "+" to show they can be expanded
+        for (let button of expandButtons) {
+            button.innerText = "+";
+        }
+
         // Display the flight info div associated with the clicked button
         flightDiv.style.display = "block";
+        // Change the clicked button text to "-" to show it can be closed
+        button.innerText = "-";
     });
 }
