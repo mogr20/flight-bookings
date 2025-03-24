@@ -31,7 +31,8 @@
     <!-- Navbar -->
     <nav id="navbar" class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/flight_bookings_logo.webp' %}" alt="The flight bookings airplane logo"> Flight Booking</a>
+            <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/flight_bookings_logo.webp' %}"
+                    alt="The flight bookings airplane logo"> Flight Booking</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -46,8 +47,8 @@
                     {% url 'my_bookings' as my_booking_url %}
                     <li class="nav-item">
                         <!-- We are setting the nav as active if we are in my_bookings.html and booking_passengers.html -->
-                        <a class="nav-link {% if my_booking_url in request.path %}active"
-                            aria-current="page{% endif %}" href="{% url 'my_bookings' %}">My Booking</a>
+                        <a class="nav-link {% if my_booking_url in request.path %}active" aria-current="page{% endif %}"
+                            href="{% url 'my_bookings' %}">My Booking</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == logout_url %}active" aria-current="page{% endif %}"
