@@ -162,7 +162,7 @@ https://wave.webaim.org/
 |Logout Confirm Page|Sign Out button|Click|Redirects to home page, user logged out|yes|
 |Register Page|Reroute to login page|Click "sign up" link|Redirects to login page|yes|
 |Register Page|Username validation|Try using existing username|Error message appears - 'A user with that username already exists'|yes|
-|Register Page|email validation|Entered invalid email (without '@')|Error message - 'Please enter valid email address' and registration fails|no, null email was permitted|
+|Register Page|email validation|Entered invalid email (without '@')|Prevents registering until you enter a valid email address|yes|
 |Register Page|password1|Enter a short password|Error message - 'That password is too short'|yes|
 |Register Page|password2|Enter different password to password1 field|Error message - 'You must type the same password each time'|yes|
 |Register Page|Sign Up button|Entered valid form data|Redirects to home page - success message displayed|yes|
@@ -173,7 +173,6 @@ https://wave.webaim.org/
 |My Booking|No Bookings|Click "My Booking" when you have no flights booked|Displays nothing, except to prompt you to make a booking|yes|
 |My Booking|Booking Details|Click "Booking Details" on any booking|Takes you to that correct booking|yes|
 |My Booking|Booking date order|Have multiple bookings, and go to "My Booking" page|There are multiple bookings, ordered by date with most recent at the top|yes|
-|My Booking|Access Control|Change the URL to another user id|You are prompted to login as the correct user for this page|yes|
 |Booking Passengers|Passengers|Look at the page|The booking is the correct one, and has the passenger details we submitted|yes|
 |Booking Passengers|Edit Passenger, first name validation|leave blank|Browser requests you fill in first name field before sending form|yes|
 |Booking Passengers|Edit Passenger, last name validation|leave blank|Browser requests you fill in last name field before sending form|yes|
@@ -187,9 +186,7 @@ https://wave.webaim.org/
 |Booking Passengers|Delete Passenger|Proceed with delete process|Stays on same page, passenger is deleted, message to notify user. Can see passenger is gone from booking|yes|
 |Booking Passengers|Delete Booking|Cancel delete process|Booking isn't deleted, page doesn't refresh/redirect|yes|
 |Booking Passengers|Delete Booking|Proceed with delete process|Redirect to "My Booking", message to user to confirm delete. Can see booking gone from "My Booking" page|yes|
-|Booking Passengers|Access Control|Change the URL to another booking id, but keep your user id|You are prompted to login as the correct user for this page. You are never confirmed if the booking/user exists|yes, 404|
-|Booking Passengers|Access Control|Change the URL to another user id, but keep your booking id|You are prompted to login as the correct user for this page. You are never confirmed if the booking/user exists|yes|
-|Booking Passengers|Access Control|Change the URL to another user id, and change to a valid booking id for that user|You are prompted to login as the correct user for this page. You are never confirmed if the booking/user exists|yes, 404|
+|Booking Passengers|Access Control|Change the URL to another booking id|You are prompted to login as the correct user for this page. You are never confirmed if the booking/user exists|yes, 404|
 |Admin|Access Control|Home page, append url with "/admin"|You are prompted to login|yes|
 |Admin|Access Control|Home page and logged in as a user, append url with "/admin"|You are prompted to login as an admin, and told your current login doesn't have the credentials|yes|
 
