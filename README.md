@@ -147,9 +147,13 @@ https://jsvalidator.com/
 ### LightHouse
 Above 80 in performance on mobile and across the whole site.
 
+Index Homepage:
 ![index homepage](https://github.com/user-attachments/assets/c82b35b3-6034-4361-b254-17efb28442f2)
+Flight Detail page:
 ![flight detail page](https://github.com/user-attachments/assets/f9da499e-bdf4-40cf-8c50-b8c2f5cd8a82)
+My Bookings page:
 ![my bookings page](https://github.com/user-attachments/assets/598fdf46-11d1-42de-a1db-86a60424cb6a)
+Booking Passenger page:
 ![booking passenger detail page](https://github.com/user-attachments/assets/8cec76ee-cc51-49cd-a2ef-3c757670d622)
 
 [Back to Contents](#Contents)
