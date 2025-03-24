@@ -42,6 +42,9 @@ def flight_detail(request, flight_id):
             messages.add_message(
                 request, messages.SUCCESS, 'Flight Booked successfully!'
             )
+            messages.add_message(
+                request, messages.INFO, 'You can go to "My Booking" to add more passengers.'
+            )
         else:
             print("bookingform.errors", passenger_form.errors)
 
