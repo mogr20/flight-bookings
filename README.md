@@ -67,6 +67,8 @@ A flight bookings web app using Django and PostgreSQL
 
 ## Wireframes
 
+![Flight homepage - wireframe](https://github.com/user-attachments/assets/30840ac2-e32d-4372-a12d-c5c42ff37415)
+
 [Back to Contents](#Contents)
 
 ## Deployed App Screenshots
