@@ -9,6 +9,11 @@ A flight bookings web app using Django and PostgreSQL
 [Flight Booking - Heroku Live Deployment](https://mogr-flight-booking-fe5c31fca0d1.herokuapp.com/)
 
 ## Product Goals
+My goal for the website is to be able to book and view flights from any airline and airport, to be able to get anywhere without having to register to several different airlines to book your holiday. This is especially a problem when you are taking more flights than just the standard two-way trip. (transit flights)
+
+A user must be able to view the departures and book a flight, with their passenger requirements.
+
+Expanding from the MVP, a user should be able to pick a date to schedule their flight, as well as pick the seats for their flight. Transit booking should be available.
 
 [Back to Contents](#Contents)
 
@@ -47,103 +52,9 @@ A flight bookings web app using Django and PostgreSQL
 
 ![User Flow](planning_files/User-Flow.jpg)
 
+[Back to Contents](#Contents)
+
 ## User Stories
-
-[Back to Contents](#Contents)
-
-## Design Inspiration
-
-[Back to Contents](#Contents)
-
-### Colour Scheme
-
-```white```  ```rgba(0, 0, 0, 0.518)```
-
-[Back to Contents](#Contents)
-
-### Font
-
-## Wireframes
-
-![Flight homepage - wireframe](planning_files/Flight-homepage-wireframe.png)
-
-[Back to Contents](#Contents)
-
-## Deployed App Screenshots
-
-<details open>
-    <summary>Every app page</summary>  
-    <img src="">  
-    <img src="">  
-    <img src="">  
-</details>
-
-<details>
-    <summary>Messages</summary>  
-    <img width="250" src="planning_files/signed-in-message.png">
-    <img width="250" src="planning_files/signed-out-message.png">
-    <img width="250" src="planning_files/passenger-details-update-message.png">
-    <img width="250" src="planning_files/flight-booked-message.png">
-</details>
-
-[Back to Contents](#Contents)
-
-# Features 
-
-## Present Features
-
-• **Homepage:** The user first arrives at the site on the homepage. Regardless of being logged in or not, they can see the departure board. We use alternating colours for each row to help highlight and differentiate them for ease of use for reading off a row of flight information.
-From here, they can click or tap on any flight to get further details.
-
-If the user is viewing the site from a mobile or tablet device, some of the columns will have disappeared and an expand info button appears to the right of every row.
-Clicking (or tapping) this button expands the row and shows the missing information below that flight. Clicking the button again shrinks that row. Clicking a different row's button also shrinks all other rows.
-
-If logged in, below the navbar the user is told they are logged in. Otherwise, they are informed to register or login to book a flight.
-
-• **Flight Details:** When a user clicks (or taps) onto a flight, they are taken to the flight detail page. Here they can see the arrival information for that flight, (which is not displayed on the departure board) which is important in the decision making process of booking a flight as arrival time can be critical for meetings or opening times for venues at their destination.
-
-Below the flight details is a passenger form. Here they can fill out one passenger and book the flight, they can specify any dietary requirements they have and choose what baggage they would like to bring.
-A user will only see the passenger form if they are logged in.
-
-Once a flight is booked, a message is displayed below the navbar confirming their booking. They can also navigate to the "My Booking" page to add more passengers or make any other changes to their booking.
-
-• **My Booking:** This page shows the user their most recent booking first, followed by all their other bookings. Like with the homepage, a user can click (or tap) on the expand button to view the full flight details if they are on mobile or tablet.
-Unlike the homepage we show the full flight information here, as we do with the flight detail page. This is because the homepage is a departure board page and should focus on the required information for a departure.
-
-Clicking (or tapping) on a booking via the "Booking Detail" button, will send the user to a booking passengers page where they can make further changes to their booking, rather than just view their booking.
-
-• **Booking Details** Once the user has navigated to this page, they can view all of the passengers they have on a booked flight. They can make edits to that passenger or delete them from the booking. Deleting or editing a passenger gives a message to confirm this below the navbar, as well as resending them to this page so they can confirm the changes themself.
-They can also delete the entire booking. If they do this, the user is redirected to their "My Booking" page, so they can edit or view the details of another booking and again, also confirm that the booking has successfully deleted. A message regardless is also viewable below the navbar that informs the user that the booking was deleted.
-
-## Future Development
-
-### Homepage
-• **Arrivals Board:** A toggle switch for the homepage to flick between arrivals board, and the departure board.
-• **Airport Selector:** Another homepage feature that would allow the user to select another airport to view the departures/arrivals for.
-• **Calendar Selector:** This would allow the user to change the date they are viewing flights for, so that they could see and book flights for a future trip.
-• **Terminal and Gate:** A user may be viewing the app as they make their way to the airport, or when they are in the airport. Having up to date information for the departure board that showed Terminal and Gate for flights (for current day) would be very useful in this use-case.
-
-### Flight Detail
-• **Multiple Passengers:** A more streamlined approach would be to allow a user to fill multiple passenger forms at the same time as they initially make a booking. Rather than currently requiring to go to a specific booking in their "My Booking" section to add these initial passengers.
-• **Add to existing booking:** Currently each flight has their own booking, a user may want to book a return trip (which would involve having two flights in the same booking) and often many countries require you to have a return trip booked before you can come to the country on a temporary work visa or holiday visa. This would help streamline the user experience when meeting this legal (and convenient) requirement, and planning their trip.
-
-[Back to Contents](#Contents)
-
-# Database Schema - Entity Relationship Diagram
-
-![database schema](planning_files/database-schema.png)
-
-[Back to Contents](#Contents)
-
-# Agile Methodologies - Project Management
-During development, I used GitHub Projects which is a github kanban board. (link below)
-In each issue I identified a user requirement and wrote it into a user story, within each issue is then the acceptance criteria for each story that gives a brief on what is needed to fulfill/meet the requirement.
-
-The Kanban board of user stories is split into three columns; Todo, In Progress, and Done.
-
-[GitHub Project Board](https://github.com/users/mogr20/projects/7)
-
----
 
 **Story 1 - Flight Details**
 
@@ -245,6 +156,160 @@ As the site owner, it is my responsibility to ensure that users cannot access ea
 
 ---
 
+[Back to Contents](#Contents)
+
+## Design Inspiration
+I shopped around to see what other designs already exist for flight booking sites.
+
+Notably I took a look at airports directly as well to see how they were displaying their departure boards. I then picked out what was good, and what could be improved, and iterated upon these to come up with my own departure boards and design.
+
+[Heathrow Departures](https://www.heathrow.com/departures)
+
+[Bristol Departures](https://www.bristolairport.co.uk/arrivals-and-departures/departures)
+
+[Back to Contents](#Contents)
+
+### Colour Scheme
+For my colour scheme, I used adobe colour and passed some images through to generate a palatte from the image.
+
+![full-palatte](planning_files/final-colour-palatte.png)
+
+My two images I sourced from pexels.com
+
+![space-shuttle](planning_files/colour-scheme-image.webp)
+Author: [Kristina Paukshtite](https://www.pexels.com/@kpaukshtite/)
+
+![airplane-on-clear-sky](planning_files/colour-scheme-image-2.webp)
+Author: [Allan Carvalho](https://www.pexels.com/@allan-carvalho-264847051/)
+
+This second image went on to inspire my logo choice as well.
+
+```background```  ```#9DC6E0```
+
+```navbar and footer``` ```#035487```
+
+```hover and highlights``` ```#1BB5F1```
+
+```light font colour``` ```#EDF3F7```
+
+```dark font colour``` ```#031D35```
+
+```less dark font colour``` ```#0D2C4D```
+
+![colour-palatte-small](planning_files/mini-colour-palate.png)
+
+[Back to Contents](#Contents)
+
+## Design Experiences
+Initally during development, I felt I would have time to have an additional CRUD for flight seating. I would have liked to have been able to show a plane graphic with an overlay table with cell buttons to pick a flight. Some seats would be blocked out or red to indicate they can't be booked.
+
+Early on into the project, that idea was scrapped as a third CRUD and plane seat interactive layout would take far too much time. However, I still had time to design the database for this feature.
+
+[Database Schema - Entity Relationship Diagram](#database-schema---entity-relationship-diagram)
+
+In the end, our modelling in Django used an object Foreign Key rather than an integer to the id for the Foreign Key. This made object manipulation for our tables possible in the view, and made creating and maintaining the logic much easier.
+
+The flights table didn't end up using the "is_departure" field, as using this boolean would require us to have duplicate flight data: an entry for a flight departing, and another for the same flight but for its arrival time. Instead I added two extra fields into the model; arrival_scheduled_time, and arrival_expected_time. This would allow me to keep the full flight data to one entry, and would make future development for a departure/arrival toggle much easier.
+
+[Back to Contents](#Contents)
+
+## Wireframes
+
+![Flight homepage - wireframe](planning_files/Flight-homepage-wireframe.png)
+
+[Back to Contents](#Contents)
+
+## Deployed App Screenshots
+
+<details open>
+    <summary>Every app page</summary>  
+    <img src="planning_files/Homepage.png">  
+    <img src="planning_files/Flight-detail.png">  
+    <img src="planning_files/my-bookings.png">
+    <img src="planning_files/booking-passengers.png">
+</details>
+
+<details>
+  <summary>Added another passenger</summary>
+  <img src="planning_files/second-passenger-added.png">
+</details>
+
+<details>
+    <summary>Messages</summary>  
+    <img width="250" src="planning_files/signed-in-message.png">
+    <img width="250" src="planning_files/signed-out-message.png">
+    <img width="250" src="planning_files/flight-booked-message.png">
+    <img width="250" src="planning_files/passenger-details-update-message.png">
+    <img width="250" src="planning_files/passenger-removed-message.png">
+    <img width="250" src="planning_files/booking-removed-message.png">
+</details>
+
+[Back to Contents](#Contents)
+
+# Features 
+
+## Present Features
+
+• **Homepage:** The user first arrives at the site on the homepage. Regardless of being logged in or not, they can see the departure board. We use alternating colours for each row to help highlight and differentiate them for ease of use for reading off a row of flight information.
+From here, they can click or tap on any flight to get further details.
+
+If the user is viewing the site from a mobile or tablet device, some of the columns will have disappeared and an expand info button appears to the right of every row.
+Clicking (or tapping) this button expands the row and shows the missing information below that flight. Clicking the button again shrinks that row. Clicking a different row's button also shrinks all other rows.
+
+If logged in, below the navbar the user is told they are logged in. Otherwise, they are informed to register or login to book a flight.
+
+• **Flight Details:** When a user clicks (or taps) onto a flight, they are taken to the flight detail page. Here they can see the arrival information for that flight, (which is not displayed on the departure board) which is important in the decision making process of booking a flight as arrival time can be critical for meetings or opening times for venues at their destination.
+
+Below the flight details is a passenger form. Here they can fill out one passenger and book the flight, they can specify any dietary requirements they have and choose what baggage they would like to bring.
+A user will only see the passenger form if they are logged in.
+
+Once a flight is booked, a message is displayed below the navbar confirming their booking. They can also navigate to the "My Booking" page to add more passengers or make any other changes to their booking.
+
+• **My Booking:** This page shows the user their most recent booking first, followed by all their other bookings. Like with the homepage, a user can click (or tap) on the expand button to view the full flight details if they are on mobile or tablet.
+Unlike the homepage we show the full flight information here, as we do with the flight detail page. This is because the homepage is a departure board page and should focus on the required information for a departure.
+
+Clicking (or tapping) on a booking via the "Booking Detail" button, will send the user to a booking passengers page where they can make further changes to their booking, rather than just view their booking.
+
+• **Booking Details** Once the user has navigated to this page, they can view all of the passengers they have on a booked flight. They can make edits to that passenger or delete them from the booking. Deleting or editing a passenger gives a message to confirm this below the navbar, as well as resending them to this page so they can confirm the changes themself.
+They can also delete the entire booking. If they do this, the user is redirected to their "My Booking" page, so they can edit or view the details of another booking and again, also confirm that the booking has successfully deleted. A message regardless is also viewable below the navbar that informs the user that the booking was deleted.
+
+[Back to Contents](#Contents)
+
+## Future Development
+
+### Homepage
+• **Arrivals Board:** A toggle switch for the homepage to flick between arrivals board, and the departure board.
+• **Airport Selector:** Another homepage feature that would allow the user to select another airport to view the departures/arrivals for.
+• **Calendar Selector:** This would allow the user to change the date they are viewing flights for, so that they could see and book flights for a future trip.
+• **Terminal and Gate:** A user may be viewing the app as they make their way to the airport, or when they are in the airport. Having up to date information for the departure board that showed Terminal and Gate for flights (for current day) would be very useful in this use-case.
+
+### Flight Detail
+• **Multiple Passengers:** A more streamlined approach would be to allow a user to fill multiple passenger forms at the same time as they initially make a booking. Rather than currently requiring to go to a specific booking in their "My Booking" section to add these initial passengers.
+• **Add to existing booking:** Currently each flight has their own booking, a user may want to book a return trip (which would involve having two flights in the same booking) and often many countries require you to have a return trip booked before you can come to the country on a temporary work visa or holiday visa. This would help streamline the user experience when meeting this legal (and convenient) requirement, and planning their trip.
+
+[Back to Contents](#Contents)
+
+# Database Schema - Entity Relationship Diagram
+
+![database schema](planning_files/database-schema.png)
+
+[Back to Contents](#Contents)
+
+# Agile Methodologies - Project Management
+During development, I used GitHub Projects which is a github kanban board. (link below)
+In each issue I identified a user requirement and wrote it into a user story, within each issue is then the acceptance criteria for each story that gives a brief on what is needed to fulfill/meet the requirement.
+
+The Kanban board of user stories is split into three columns; Todo, In Progress, and Done.
+
+[GitHub Project Board](https://github.com/users/mogr20/projects/7)
+
+Sprint 1: Database Schema
+Sprint 2: Models and Views
+Sprint 3: Basic Templates to utilise the views
+Sprint 4: UX design and implementation
+Sprint 5: Access Control
+Sprint 6: Accessibility and finalization
+
 ## MoSCoW Prioritization
 Within my Kanban board, we have MoSCoW priortization labels. These help identify (from a glance) what tasks should be priortized.
 The labels include; must-do, should-do, and could-do.
@@ -287,6 +352,7 @@ All code was written in Visual Studio as the IDE. GitHub and Git were used for v
 **HTML5** - Markup language for the web template structure
 **CSS** - Styling language for styling the web templates
 **JS** - Web interactivity and DOM manipulation
+**Bootstrap** 5.3.3 - Styling and frontend toolkit for rapid design
 **Python** 3.12.8 (Django 4.2.20) - Backend web framework, for views, models, and dynamic templates
 **PostgreSQL** - Database storage and management, created by django models, and manipulated via django views
 **Whitenoise** 5.3.0 - Serves the static files directly from Django
@@ -317,12 +383,19 @@ https://pep8ci.herokuapp.com/
 Above 80 in performance on mobile and across the whole site.
 
 Index Homepage:
+
 ![index homepage](planning_files/index-homepage.png)
+
 Flight Detail page:
+
 ![flight detail page](planning_files/flight-detail-page.png)
+
 My Bookings page:
+
 ![my bookings page](planning_files/my-bookings-page.png)
+
 Booking Passenger page:
+
 ![booking passenger detail page](planning_files/booking-passenger-detail-page.png)
 
 [Back to Contents](#Contents)
