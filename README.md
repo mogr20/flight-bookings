@@ -235,6 +235,13 @@ The flights table didn't end up using the "is_departure" field, as using this bo
 </details>
 
 <details>
+  <summary>Auth Login/Register/Logout pages</summary>
+  <img src="planning_files/login.png">
+  <img src="planning_files/register.png">
+  <img src="planning_files/sign-out.png">
+</details>
+
+<details>
     <summary>Messages</summary>  
     <img width="250" src="planning_files/signed-in-message.png">
     <img width="250" src="planning_files/signed-out-message.png">
