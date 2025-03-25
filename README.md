@@ -144,26 +144,36 @@ The Kanban board of user stories is split into three columns; Todo, In Progress,
 As a trip planner, I want to be able to view what flights are available to book, so I know whether my intended destination is available before I register and login.
 
 **Acceptance Criteria**
+
 • Users that aren't logged in can see a departure board for all the flights, including a status column for delayed, on time, or cancelled status.
+
+---
 
 **Story 2 - User Booking**
 As a member of the senior director team, I want to be able to make a booking so I can promptly reach my intended destination.
 
 **Acceptance Criteria**
+
 • Logged in users can create a flight booking from a selection of flights.
+
+---
 
 **Story 3 - User Manage Bookings**
 As a family, we want to be able to add more passengers to our booking, and detail our passengers dietary requirements and baggage requirements for our booking.
 
 **Acceptance Criteria**
+
 • Users can view their bookings, and delete the booking.
 
 • Users can update their passenger information, add more passengers, or delete passengers.
+
+---
 
 **Story 4 - User Notifications**
 As a late flier, I need to know if my booking has been accepted. The gate is closing in 10 minutes!
 
 **Acceptance Criteria**
+
 • Whenever a user creates, updates, or deletes a booking, they are informed with a message.
 
 • Whenever a user creates, updates, or deletes a passenger, they are informed with a message.
@@ -172,36 +182,48 @@ As a late flier, I need to know if my booking has been accepted. The gate is clo
 
 • User is notified via message whenever they; register, login, logout.
 
+---
+
 **Story 5 - User Registration and Login**
 As a frequent flier, I want to login with my existing account to make my booking.
 
 **Acceptance Criteria**
+
 • Any user can create a user access level account.
 
 • Account registration form has validation.
+
+---
 
 **Story 6 - Admin Bookings and Flights**
 As the site owner, I want to be able to populate the flight board, update the flight status, and help a customer with any booking changes they wish to make.
 
 **Acceptance Criteria**
+
 • An admin can login and view bookings and flights.
 
 • An admin can modify or delete bookings and passengers.
 
 • An admin can modify or delete flights.
 
+---
+
 **Story 7 - Responsiveness**
 As a flier on the go, I don't have regular access to a laptop or desktop, I need to be able to use the site on my phone.
 
 **Acceptance Criteria**
+
 • The website displays responsiveness across all devices.
 
 • The website has aria labels, acceptable contrasts, and other accessibility features to ensure all users can use the site for their travel needs.
+
+---
 
 **Story 8 - Access Control**
 As the site owner, it is my responsibility to ensure that users cannot access each others records, or worse, the admin page!
 
 **Acceptance Criteria**
+
 • Users can see, edit, add, or delete their own bookings/passengers but no one elses. They can select a flight to book, but can't modify a flight.
 
 • Admin have access to see and modify a booking/passengers, and any flight.
