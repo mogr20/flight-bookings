@@ -6,7 +6,7 @@ A flight bookings web app using Django and PostgreSQL
 [Back to Contents](#Contents)
 
 ## Live deployment
-[Flight Booking](https://mogr-flight-booking-fe5c31fca0d1.herokuapp.com/)
+[Flight Booking - Heroku Live Deployment](https://mogr-flight-booking-fe5c31fca0d1.herokuapp.com/)
 
 ## Product Goals
 
@@ -27,7 +27,6 @@ A flight bookings web app using Django and PostgreSQL
 6. [Deployment](#deployment)
   - [Connecting to GitHub](#connecting-to-github)
   - [Django Project Setup](#django-project-setup)
-  - [Cloudinary API](#cloudinary-api)
   - [Heroku deployment](#heroku-deployment)
 7. [Technologies Used](#technologies-used)
 8. [Testing](#testing)
@@ -44,10 +43,9 @@ A flight bookings web app using Django and PostgreSQL
 10. [Credits](#credits)
   - [Content](#content)
 
-
 # UX - User Experience
 
-![User Flow](https://github.com/user-attachments/assets/5a965c7f-f6d3-4d28-a1c6-e981218acf29)
+![User Flow](planning_files/User-Flow.jpg)
 
 ## User Stories
 
@@ -67,22 +65,25 @@ A flight bookings web app using Django and PostgreSQL
 
 ## Wireframes
 
-![Flight homepage - wireframe](https://github.com/user-attachments/assets/30840ac2-e32d-4372-a12d-c5c42ff37415)
+![Flight homepage - wireframe](planning_files/Flight-homepage-wireframe.png)
 
 [Back to Contents](#Contents)
 
 ## Deployed App Screenshots
 
 <details open>
-    <summary></summary>  
+    <summary>Every app page</summary>  
     <img src="">  
     <img src="">  
     <img src="">  
 </details>
 
 <details>
-    <summary></summary>  
-    <img src="">  
+    <summary>Messages</summary>  
+    <img src="planning_files/signed-in-message.png">
+    <img src="planning_files/signed-out-message.png">
+    <img src="planning_files/passenger-details-update-message.png">
+    <img src="planning_files/flight-booked-message.png">
 </details>
 
 [Back to Contents](#Contents)
@@ -130,7 +131,7 @@ They can also delete the entire booking. If they do this, the user is redirected
 
 # Database Schema - Entity Relationship Diagram
 
-![database schema](https://github.com/user-attachments/assets/7387a8df-bba4-49c6-ade6-b51fc522a6a3)
+![database schema](planning_files/database-schema.png)
 
 [Back to Contents](#Contents)
 
@@ -140,9 +141,12 @@ In each issue I identified a user requirement and wrote it into a user story, wi
 
 The Kanban board of user stories is split into three columns; Todo, In Progress, and Done.
 
-[Project Board](https://github.com/users/mogr20/projects/7)
+[GitHub Project Board](https://github.com/users/mogr20/projects/7)
+
+---
 
 **Story 1 - Flight Details**
+
 As a trip planner, I want to be able to view what flights are available to book, so I know whether my intended destination is available before I register and login.
 
 **Acceptance Criteria**
@@ -152,6 +156,7 @@ As a trip planner, I want to be able to view what flights are available to book,
 ---
 
 **Story 2 - User Booking**
+
 As a member of the senior director team, I want to be able to make a booking so I can promptly reach my intended destination.
 
 **Acceptance Criteria**
@@ -161,76 +166,74 @@ As a member of the senior director team, I want to be able to make a booking so 
 ---
 
 **Story 3 - User Manage Bookings**
+
 As a family, we want to be able to add more passengers to our booking, and detail our passengers dietary requirements and baggage requirements for our booking.
 
 **Acceptance Criteria**
 
 • Users can view their bookings, and delete the booking.
-
 • Users can update their passenger information, add more passengers, or delete passengers.
 
 ---
 
 **Story 4 - User Notifications**
+
 As a late flier, I need to know if my booking has been accepted. The gate is closing in 10 minutes!
 
 **Acceptance Criteria**
 
 • Whenever a user creates, updates, or deletes a booking, they are informed with a message.
-
 • Whenever a user creates, updates, or deletes a passenger, they are informed with a message.
-
 • Booking form has validation, so the user can rest assured that their booking was successful, and their details have been accepted and registered correctly.
-
 • User is notified via message whenever they; register, login, logout.
 
 ---
 
 **Story 5 - User Registration and Login**
+
 As a frequent flier, I want to login with my existing account to make my booking.
 
 **Acceptance Criteria**
 
 • Any user can create a user access level account.
-
 • Account registration form has validation.
 
 ---
 
 **Story 6 - Admin Bookings and Flights**
+
 As the site owner, I want to be able to populate the flight board, update the flight status, and help a customer with any booking changes they wish to make.
 
 **Acceptance Criteria**
 
 • An admin can login and view bookings and flights.
-
 • An admin can modify or delete bookings and passengers.
-
 • An admin can modify or delete flights.
 
 ---
 
 **Story 7 - Responsiveness**
+
 As a flier on the go, I don't have regular access to a laptop or desktop, I need to be able to use the site on my phone.
 
 **Acceptance Criteria**
 
 • The website displays responsiveness across all devices.
-
 • The website has aria labels, acceptable contrasts, and other accessibility features to ensure all users can use the site for their travel needs.
 
 ---
 
 **Story 8 - Access Control**
+
 As the site owner, it is my responsibility to ensure that users cannot access each others records, or worse, the admin page!
 
 **Acceptance Criteria**
 
 • Users can see, edit, add, or delete their own bookings/passengers but no one elses. They can select a flight to book, but can't modify a flight.
-
 • Admin have access to see and modify a booking/passengers, and any flight.
-
 • Users that aren't logged in can see flights and their status, but cannot make a booking.
+
+---
 
 ## MoSCoW Prioritization
 Within my Kanban board, we have MoSCoW priortization labels. These help identify (from a glance) what tasks should be priortized.
@@ -245,10 +248,6 @@ The labels include; must-do, should-do, and could-do.
 [Back to Contents](#Contents)
 
 ## Django Project Setup
-
-[Back to Contents](#Contents)
-
-## Cloudinary API 
 
 [Back to Contents](#Contents)
 
@@ -276,18 +275,20 @@ Passed
 https://jsvalidator.com/
 
 ### Python
+Passed
+https://pep8ci.herokuapp.com/
 
 ### LightHouse
 Above 80 in performance on mobile and across the whole site.
 
 Index Homepage:
-![index homepage](https://github.com/user-attachments/assets/c82b35b3-6034-4361-b254-17efb28442f2)
+![index homepage](planning_files/index-homepage.png)
 Flight Detail page:
-![flight detail page](https://github.com/user-attachments/assets/f9da499e-bdf4-40cf-8c50-b8c2f5cd8a82)
+![flight detail page](planning_files/flight-detail-page.png)
 My Bookings page:
-![my bookings page](https://github.com/user-attachments/assets/598fdf46-11d1-42de-a1db-86a60424cb6a)
+![my bookings page](planning_files/my-bookings-page.png)
 Booking Passenger page:
-![booking passenger detail page](https://github.com/user-attachments/assets/8cec76ee-cc51-49cd-a2ef-3c757670d622)
+![booking passenger detail page](planning_files/booking-passenger-detail-page.png)
 
 [Back to Contents](#Contents)
 
@@ -295,7 +296,7 @@ Booking Passenger page:
 Passed
 https://wave.webaim.org/
 
-![WAVE](https://github.com/user-attachments/assets/7b8e826c-a63e-4b68-97ed-db721b7ca170)
+![WAVE](planning_files/WAVE.png)
 
 [Back to Contents](#Contents)
 
