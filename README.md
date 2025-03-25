@@ -23,15 +23,21 @@ Expanding from the MVP, a user should be able to pick a date to schedule their f
   - [Live Deployment](#live-deployment)
   - [Product Goals](#product-goals)
 2. [UX/UI](#ux---user-experience)
-  - 
+  - [User Stories](#user-stories)
+  - [Design Inspiration](#design-inspiration)
+    - [Colour Scheme](#colour-scheme)
+  - [Design Experiences](#design-experiences)
+  - [Wireframes](#wireframes)
+  - [Deployed App Screenshots](#deployed-app-screenshots)
 3. [Features](#features)
-  - 
+  - [Present Features](#present-features)
+  - [Future Development](#future-development)
 4. [Database Schema - Entity Relationship Diagram](#database-schema---entity-relationship-diagram)
 5. [Agile Methodologies - Project Management](#agile-methodologies---project-management)
   - [MoSCoW Prioritization](#moscow-prioritization)
 6. [Deployment](#deployment)
-  - [Connecting to GitHub](#connecting-to-github)
-  - [Django Project Setup](#django-project-setup)
+  - [Cloning from GitHub](#cloning-from-github)
+  - [PostgreSQL Database](#postgresql-database)
   - [Heroku deployment](#heroku-deployment)
 7. [Technologies Used](#technologies-used)
 8. [Testing](#testing)
@@ -44,8 +50,13 @@ Expanding from the MVP, a user should be able to pick a date to schedule their f
     - [Wave](#wave-accessibility-evaluation)
   - [Feature Testing](#feature-testing)
 9. [Use of AI](#use-of-ai)
-  - 
+  - [Code Creation](#code-creation)
+  - [Debugging](#debugging)
+  - [Performance and User Experience](#performance-and-user-experience)
+  - [Automated Test Units](#automated-test-units)
+  - [Workflow](#workflow)
 10. [Credits](#credits)
+11. [Acknowledgements](#acknowledgements)
 
 # UX - User Experience
 
@@ -175,9 +186,11 @@ For my colour scheme, I used adobe colour and passed some images through to gene
 My two images I sourced from pexels.com
 
 ![space-shuttle](planning_files/colour-scheme-image.webp)
+
 Author: [Kristina Paukshtite](https://www.pexels.com/@kpaukshtite/)
 
 ![airplane-on-clear-sky](planning_files/colour-scheme-image-2.webp)
+
 Author: [Allan Carvalho](https://www.pexels.com/@allan-carvalho-264847051/)
 
 This second image went on to inspire my logo choice as well.
@@ -495,14 +508,14 @@ https://wave.webaim.org/
 
 # Use of AI
 ## Code Creation
-I utilised AI in helping with the initial fields and tables needed for a flight booking database, after that I was able to make some modifications myself and finialise with mentors. AI here helped me to expedite the initial database structure, saving time and thought on theorising what fields and tables I might initially need, and allow me to focus on refinement rather than initial design.
+I utilised AI in helping with the initial fields and tables needed for a flight booking database, after that I was able to make some modifications myself and finialise with tutors. AI here helped me to expedite the initial database structure, saving time and thought on theorising what fields and tables I might initially need, and allow me to focus on refinement rather than initial design.
 
 I also used AI to help me create a django template language loop that could alternate between different background colours for each row. I did not know how to do this in the templating language, however the AI was able to create a modulo function in the index.html page, as well as using cycle to alternate for each iteration of the tables in my_bookings.html. AI here meant I could discover new functionality that is available to me, without having to trawl through the documentation to find the name of something that might help. Once the AI prompted me that something that could solve my table alternating colours problem existed, I could then go to the Django template language documents to customise and throughly utilise what the AI drew my attention to.
 
 ## Debugging
 AI was vital during debugging. If I didn't understand what a terminal or webpage error was, copilot was there to explain it to me. If I needed then solutions, I would ask the AI for help on a problem, and prompt them to ask me questions to further refine my prompt. This led to concise and correct answers to my problems from the AI, allowing me to continue my developement and learn without having a nasty lengthy roadblock.
 
-Another use was if the AI couldn't provide an answer, it equipped me with the full diagnosis, so I could search through documentation myself, or where time was tight ask a mentor with concise and specific query. This led to prompt responses from my mentors and saved on their valuable time.
+Another use was if the AI couldn't provide an answer, it equipped me with the full diagnosis, so I could search through documentation myself, or where time was tight ask a tutor with concise and specific query. This led to prompt responses from my tutors and saved on their valuable time.
 
 Specific use case were with solving; Bootstrap styling bugs, and url reverse strings.
 
@@ -515,7 +528,7 @@ I did manual testing here, AI was not used for this.
 I could have used AI for my test case statements, however I was comfortable with writing these as I have had SVT and QA experience previously in the tech sector.
 
 ## Workflow
-As mentioned previously in these other AI topics, I mostly used AI to rapidly discover new functionality within the languages, or to debug my code. Where it could not do this, AI was able to give me succinct information I could use for my own learning and discovery, or to pass onto mentors who could then promptly help with my problems. I was comfortable with coding, however there were times when I was unfamiliar of terminology and didn't know how to respond to a mentors question, another advantage to AI where it could save me some embarassing questions!
+As mentioned previously in these other AI topics, I mostly used AI to rapidly discover new functionality within the languages, or to debug my code. Where it could not do this, AI was able to give me succinct information I could use for my own learning and discovery, or to pass onto tutors who could then promptly help with my problems. I was comfortable with coding, however there were times when I was unfamiliar of terminology and didn't know how to respond to a tutors question, another advantage to AI where it could save me some embarassing questions!
 
 Ultimately, AI helped keep me to my timelines and within the confines of my sprints. It enabled me to pick up on unknown functionality of languages and use them in a limited but specific way I needed for this project.
 
@@ -563,4 +576,6 @@ The favicon was generated from a fontawesome icon using the FontIcon tool.
 # Acknowledgements
 I would like to thank; Mathew Isherwood, Aaron Ibbotson, Hannah Mooney, and David Coles, for their help and moral support through this project.
 
-A special thanks to my mentors; Kevin Loughrey, John Rearden, and Ruairidh MacArthur. They helped me throughout the project, especially when AI and Google could provide no suitable answers. :D
+Another thanks to our facilitator and mentor, Alexander Tastad, who helped bring our hopes us and encourage us all through our projects.
+
+A special thanks to my tutors; Kevin Loughrey, John Rearden, and Ruairidh MacArthur. They helped me throughout the project, especially when AI and Google could provide no suitable answers. :D
