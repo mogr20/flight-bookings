@@ -89,7 +89,40 @@ A flight bookings web app using Django and PostgreSQL
 
 ## Present Features
 
+• **Homepage:** The user first arrives at the site on the homepage. Regardless of being logged in or not, they can see the departure board. We use alternating colours for each row to help highlight and differentiate them for ease of use for reading off a row of flight information.
+From here, they can click or tap on any flight to get further details.
+
+If the user is viewing the site from a mobile or tablet device, some of the columns will have disappeared and an expand info button appears to the right of every row.
+Clicking (or tapping) this button expands the row and shows the missing information below that flight. Clicking the button again shrinks that row. Clicking a different row's button also shrinks all other rows.
+
+If logged in, below the navbar the user is told they are logged in. Otherwise, they are informed to register or login to book a flight.
+
+• **Flight Details:** When a user clicks (or taps) onto a flight, they are taken to the flight detail page. Here they can see the arrival information for that flight, (which is not displayed on the departure board) which is important in the decision making process of booking a flight as arrival time can be critical for meetings or opening times for venues at their destination.
+
+Below the flight details is a passenger form. Here they can fill out one passenger and book the flight, they can specify any dietary requirements they have and choose what baggage they would like to bring.
+A user will only see the passenger form if they are logged in.
+
+Once a flight is booked, a message is displayed below the navbar confirming their booking. They can also navigate to the "My Booking" page to add more passengers or make any other changes to their booking.
+
+• **My Booking:** This page shows the user their most recent booking first, followed by all their other bookings. Like with the homepage, a user can click (or tap) on the expand button to view the full flight details if they are on mobile or tablet.
+Unlike the homepage we show the full flight information here, as we do with the flight detail page. This is because the homepage is a departure board page and should focus on the required information for a departure.
+
+Clicking (or tapping) on a booking via the "Booking Detail" button, will send the user to a booking passengers page where they can make further changes to their booking, rather than just view their booking.
+
+• **Booking Details** Once the user has navigated to this page, they can view all of the passengers they have on a booked flight. They can make edits to that passenger or delete them from the booking. Deleting or editing a passenger gives a message to confirm this below the navbar, as well as resending them to this page so they can confirm the changes themself.
+They can also delete the entire booking. If they do this, the user is redirected to their "My Booking" page, so they can edit or view the details of another booking and again, also confirm that the booking has successfully deleted. A message regardless is also viewable below the navbar that informs the user that the booking was deleted.
+
 ## Future Development
+
+### Homepage
+• **Arrivals Board:** A toggle switch for the homepage to flick between arrivals board, and the departure board.
+• **Airport Selector:** Another homepage feature that would allow the user to select another airport to view the departures/arrivals for.
+• **Calendar Selector:** This would allow the user to change the date they are viewing flights for, so that they could see and book flights for a future trip.
+• **Terminal and Gate:** A user may be viewing the app as they make their way to the airport, or when they are in the airport. Having up to date information for the departure board that showed Terminal and Gate for flights (for current day) would be very useful in this use-case.
+
+### Flight Detail
+• **Multiple Passengers:** A more streamlined approach would be to allow a user to fill multiple passenger forms at the same time as they initially make a booking. Rather than currently requiring to go to a specific booking in their "My Booking" section to add these initial passengers.
+• **Add to existing booking:** Currently each flight has their own booking, a user may want to book a return trip (which would involve having two flights in the same booking) and often many countries require you to have a return trip booked before you can come to the country on a temporary work visa or holiday visa. This would help streamline the user experience when meeting this legal (and convenient) requirement, and planning their trip.
 
 [Back to Contents](#Contents)
 
@@ -100,6 +133,8 @@ A flight bookings web app using Django and PostgreSQL
 [Back to Contents](#Contents)
 
 # Agile Methodologies - Project Management
+
+[Project Board](https://github.com/users/mogr20/projects/7)
 
 ## MoSCoW Prioritization
 
