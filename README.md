@@ -284,6 +284,13 @@ All code was written in Visual Studio as the IDE. GitHub and Git were used for v
 [Back to Contents](#Contents)
 
 # Technologies Used
+**HTML5** - Markup language for the web template structure
+**CSS** - Styling language for styling the web templates
+**JS** - Web interactivity and DOM manipulation
+**Python** 3.12.8 (Django 4.2.20) - Backend web framework, for views, models, and dynamic templates
+**PostgreSQL** - Database storage and management, created by django models, and manipulated via django views
+**Whitenoise** 5.3.0 - Serves the static files directly from Django
+**Heroku**- Online hosting service for the website
 
 [Back to Contents](#Contents)
 
