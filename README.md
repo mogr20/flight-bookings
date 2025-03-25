@@ -80,10 +80,10 @@ A flight bookings web app using Django and PostgreSQL
 
 <details>
     <summary>Messages</summary>  
-    <img src="planning_files/signed-in-message.png">
-    <img src="planning_files/signed-out-message.png">
-    <img src="planning_files/passenger-details-update-message.png">
-    <img src="planning_files/flight-booked-message.png">
+    <img width="250" src="planning_files/signed-in-message.png">
+    <img width="250" src="planning_files/signed-out-message.png">
+    <img width="250" src="planning_files/passenger-details-update-message.png">
+    <img width="250" src="planning_files/flight-booked-message.png">
 </details>
 
 [Back to Contents](#Contents)
@@ -172,6 +172,7 @@ As a family, we want to be able to add more passengers to our booking, and detai
 **Acceptance Criteria**
 
 • Users can view their bookings, and delete the booking.
+
 • Users can update their passenger information, add more passengers, or delete passengers.
 
 ---
@@ -183,8 +184,11 @@ As a late flier, I need to know if my booking has been accepted. The gate is clo
 **Acceptance Criteria**
 
 • Whenever a user creates, updates, or deletes a booking, they are informed with a message.
+
 • Whenever a user creates, updates, or deletes a passenger, they are informed with a message.
+
 • Booking form has validation, so the user can rest assured that their booking was successful, and their details have been accepted and registered correctly.
+
 • User is notified via message whenever they; register, login, logout.
 
 ---
@@ -196,6 +200,7 @@ As a frequent flier, I want to login with my existing account to make my booking
 **Acceptance Criteria**
 
 • Any user can create a user access level account.
+
 • Account registration form has validation.
 
 ---
@@ -207,7 +212,9 @@ As the site owner, I want to be able to populate the flight board, update the fl
 **Acceptance Criteria**
 
 • An admin can login and view bookings and flights.
+
 • An admin can modify or delete bookings and passengers.
+
 • An admin can modify or delete flights.
 
 ---
@@ -219,6 +226,7 @@ As a flier on the go, I don't have regular access to a laptop or desktop, I need
 **Acceptance Criteria**
 
 • The website displays responsiveness across all devices.
+
 • The website has aria labels, acceptable contrasts, and other accessibility features to ensure all users can use the site for their travel needs.
 
 ---
@@ -230,7 +238,9 @@ As the site owner, it is my responsibility to ensure that users cannot access ea
 **Acceptance Criteria**
 
 • Users can see, edit, add, or delete their own bookings/passengers but no one elses. They can select a flight to book, but can't modify a flight.
+
 • Admin have access to see and modify a booking/passengers, and any flight.
+
 • Users that aren't logged in can see flights and their status, but cannot make a booking.
 
 ---
@@ -242,16 +252,34 @@ The labels include; must-do, should-do, and could-do.
 [Back to Contents](#Contents)
 
 # Deployment
+All code was written in Visual Studio as the IDE. GitHub and Git were used for version control, and the application was deployed to Heroku from GitHub.
 
 ## Cloning from GitHub
+1. Clone the repository in git bash
+```git clone https://github.com/mogr20/flight-bookings.git```
+2. Navigate to the project folder
+```cd [your project folder here]```
+3. Open in VSCode
+```code .```
 
-[Back to Contents](#Contents)
-
-## Django Project Setup
-
-[Back to Contents](#Contents)
+## PostgreSQL Database
+4. Create a new PostgreSQL Database
+5. Connect your database to your VSCode environment with a env.py file (we are already ignoring this file in the cloned .gitignore)
+6. Create a ```os.environ.setdefault``` key-value pair for ```SECRET_KEY``` and ```DATABASE_URL``` in your env.py file
+7. Run the command: ```python3 manage.py migrate```
+8. Create a super user: ```python3 manage.py createsuperuser```
+9. Commit the migrations to your cloned repo: ```git add .```, ```git commit -m [your message here]```, ```git push```
 
 ## Heroku deployment
+10. Create a new app. Login to Heroku (or make a new account) go to your Dashboard and click "Create New App"
+11. Select an appropriate region (I selected Europe for my deployment)
+12. In the "Deploy" tab, select GitHub as the deployment method
+13. Search for the repository name and click "Connect"
+14. Go to the "Settings" tab, and add config var settings for; DATABASE_URL and SECRET_KEY
+15. In VSCode, settings.py add the deployed app to ALLOWED_HOSTS
+16. Push that update ```git push```
+17. Back in Heroku, in the "Deploy" tab connect to your GitHub cloned repo to deploy, and deploy
+18. After a successful deployment, a "View" button will appear that will open the live site in a new tab
 
 [Back to Contents](#Contents)
 
