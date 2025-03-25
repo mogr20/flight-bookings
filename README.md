@@ -477,25 +477,30 @@ https://wave.webaim.org/
 [Back to Contents](#Contents)
 
 # Use of AI
-1. General Debugging Assistance
-Issue: Various layout and alignment issues in the app.
-Steps Taken:
-Provided debugging steps using browser developer tools to inspect applied styles.
-Suggested isolating the issue with a simplified test case to identify conflicts.
-2. Django-Specific Assistance
-Issue: Redirecting to a view with reverse caused a TypeError due to incorrect arguments.
-Steps Taken:
-Corrected the reverse function call by wrapping the booking_id in a list or tuple to ensure it was iterable.
-3. Code and Style Improvements
-HTML:
-Ensured proper structure for the accordion button and its child elements.
-Used Bootstrap utility classes (d-flex, ms-1, align-items-center) for consistent styling.
-CSS:
+## Code Creation
+I utilised AI in helping with the initial fields and tables needed for a flight booking database, after that I was able to make some modifications myself and finialise with mentors. AI here helped me to expedite the initial database structure, saving time and thought on theorising what fields and tables I might initially need, and allow me to focus on refinement rather than initial design.
 
-4. Collaboration and Iteration
-Approach:
-Asked targeted questions to gather context and debug effectively.
-Iteratively refined solutions based on your feedback and testing results.
+I also used AI to help me create a django template language loop that could alternate between different background colours for each row. I did not know how to do this in the templating language, however the AI was able to create a modulo function in the index.html page, as well as using cycle to alternate for each iteration of the tables in my_bookings.html. AI here meant I could discover new functionality that is available to me, without having to trawl through the documentation to find the name of something that might help. Once the AI prompted me that something that could solve my table alternating colours problem existed, I could then go to the Django template language documents to customise and throughly utilise what the AI drew my attention to.
+
+## Debugging
+AI was vital during debugging. If I didn't understand what a terminal or webpage error was, copilot was there to explain it to me. If I needed then solutions, I would ask the AI for help on a problem, and prompt them to ask me questions to further refine my prompt. This led to concise and correct answers to my problems from the AI, allowing me to continue my developement and learn without having a nasty lengthy roadblock.
+
+Another use was if the AI couldn't provide an answer, it equipped me with the full diagnosis, so I could search through documentation myself, or where time was tight ask a mentor with concise and specific query. This led to prompt responses from my mentors and saved on their valuable time.
+
+Specific use case were with solving; Bootstrap styling bugs, and url reverse strings.
+
+## Performance and User Experience
+This is where I struggled to use AI, as it often came back to me with inefficient code. However I did find AI useful during the user experience development, where I could prompts and recieve suggestions. Or better yet, iterate through several mock ups or renditions. This accelerated the design and prototype process considerably.
+
+## Automated test units
+I did manual testing here, AI was not used for this.
+
+I could have used AI for my test case statements, however I was comfortable with writing these as I have had SVT and QA experience previously in the tech sector.
+
+## Workflow
+As mentioned previously in these other AI topics, I mostly used AI to rapidly discover new functionality within the languages, or to debug my code. Where it could not do this, AI was able to give me succinct information I could use for my own learning and discovery, or to pass onto mentors who could then promptly help with my problems. I was comfortable with coding, however there were times when I was unfamiliar of terminology and didn't know how to respond to a mentors question, another advantage to AI where it could save me some embarassing questions!
+
+Ultimately, AI helped keep me to my timelines and within the confines of my sprints. It enabled me to pick up on unknown functionality of languages and use them in a limited but specific way I needed for this project.
 
 [Back to Contents](#Contents)
 
