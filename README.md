@@ -1,7 +1,7 @@
 # Flight Bookings
 A flight bookings web app using Django and PostgreSQL
 
-![flight app on all devices](https://github.com/user-attachments/assets/ddf52129-e8d9-49ba-8f61-9d39c713b959)
+![all-devices-mockup](flight_app_on_all_devices.png)
 
 [Back to Contents](#Contents)
 
