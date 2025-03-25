@@ -1,7 +1,7 @@
 # Flight Bookings
 A flight bookings web app using Django and PostgreSQL
 
-![all-devices-mockup](flight-app-on-all-devices.png)
+![all-devices-mockup](planning_files/flight-app-on-all-devices.png)
 
 [Back to Contents](#Contents)
 
