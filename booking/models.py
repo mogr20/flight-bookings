@@ -5,7 +5,8 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Booking(models.Model):
     """
-    
+    Stores a booking made by the user, related to :model:`auth.User`.
+    There can be many bookings per user.
     """
     booking_date = models.DateTimeField(auto_now_add=True)
     user_id = models.ForeignKey(
@@ -18,7 +19,8 @@ class Booking(models.Model):
 
 class Passenger(models.Model):
     """
-    
+    Stores a passenger made by the user, related to :model:`Booking`.
+    There can be many passengers per booking.
     """
     booking_id = models.ForeignKey(
         Booking, on_delete=models.CASCADE
@@ -48,7 +50,7 @@ class Passenger(models.Model):
 
 class Airport(models.Model):
     """
-    
+    Stores an airport created by an admin.
     """
     airport_code = models.CharField(max_length=20, unique=True)
     airport_name = models.CharField(max_length=100)
@@ -62,7 +64,9 @@ class Airport(models.Model):
 
 class Flight(models.Model):
     """
-    
+    Stores a flight created by an admin, related to :model:`Airport`.
+    One foreign key/relation is for departures, and the other arrivals.
+    There can be many flights per airport.
     """
     flight_number = models.CharField(max_length=20)
     airline = models.CharField(max_length=50)
@@ -97,7 +101,8 @@ class Flight(models.Model):
 
 class Seat(models.Model):
     """
-    
+    Stores a seat created by an admin, related to :model:`Flight`.
+    There can be many seats per flight.
     """
     seat_number = models.CharField(max_length=10)
     flight_id = models.ForeignKey(
@@ -111,7 +116,10 @@ class Seat(models.Model):
 
 class Flight_Seat(models.Model):
     """
-    
+    Stores a flight_seat created by an user, related to
+                :model:`Seat` and :model:`Booking`.
+    There can be many flight_seats per booking.
+    Seat and flight_seat are a one-one relation.
     """
     seat_id = models.ForeignKey(
         Seat, on_delete=models.CASCADE
@@ -128,7 +136,9 @@ class Flight_Seat(models.Model):
 
 class Journey(models.Model):
     """
-    
+    Stores a journey created by the user, related to :model:`Booking`.
+    Journey and booking have a one-one relationship,
+    however, this will be expanded upon in future development.
     """
     booking_id = models.ForeignKey(
         Booking, on_delete=models.CASCADE

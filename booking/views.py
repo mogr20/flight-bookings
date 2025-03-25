@@ -11,6 +11,14 @@ from .forms import PassengerForm
 class HomePage(generic.ListView):
     """
     Displays the home page.
+    Returns all flights in :model:`booking.Flight`
+    and displays them in a table.
+    **Context**
+    
+    ``queryset``
+        All instances of :model:`booking.Flight`.
+    ``template_name``
+        html template to send the data to.
     """
     queryset = Flight.objects.all()
     template_name = 'booking/index.html'
@@ -19,6 +27,24 @@ class HomePage(generic.ListView):
 def flight_detail(request, flight_id):
     """
     Displays the details of an individual :model:`booking.Flight`.
+    Returns the specific flight, if it exists.
+    
+    **Context**
+    
+    ``flight``
+        The specific :model:`booking.Flight` instance to display.
+    ``passenger_form``
+        Form to add a new :model:`booking.Passenger`.
+    ``queryset``
+        All instances of :model:`booking.Flight`.
+    ``booking``
+        New booking :model:`booking.Booking` instance.
+    ``passenger``
+        New passenger :model:`booking.Passenger` instance
+        for the booking.
+    ``journey``
+        New Journey :model:`booking.Journey` instance,
+        for the booking.
     """
     queryset = Flight.objects.all()
     flight = get_object_or_404(queryset, pk=flight_id)
@@ -62,6 +88,18 @@ def flight_detail(request, flight_id):
 def all_my_bookings(request):
     """
     Displays all of the user's bookings, and flights associated with them.
+    Returns all bookings in :model:`booking.Booking` that
+    are associated with the user.
+    
+    **Context**
+    ``bookings``
+        All instances of :model:`booking.Booking` for the user.
+    ``journeys``
+        All instances of :model:`booking.Journey` for the
+        user's bookings.
+    ``flight_list``
+        All instances of :model:`booking.Flight` that match
+        the user's journeys.
     """
     print("in bookings")
     bookings = Booking.objects.filter(user_id=request.user.id).order_by(
@@ -80,8 +118,24 @@ def all_my_bookings(request):
 @login_required
 def booking_detail(request, booking_id):
     """
-    Displays a specific booking, flights associated with it,
-    and customers associated with it.
+    Displays a specific booking, flight associated with it,
+    and passengers associated with it.
+    Returns the specific booking, if it exists.
+    
+    **Context**
+    ``booking``
+        The specific :model:`booking.Booking` instance to display.
+    ``journey``
+        The specific :model:`booking.Journey` instance to display,
+        linked to the booking.
+    ``flight``
+        The specific :model:`booking.Flight` instance to display,
+        linked to the journey.
+    ``passenger_list``
+        All instances of :model:`booking.Passenger` that are
+        associated with the booking.
+    ``passenger_form``
+        Form to add a new :model:`booking.Passenger`.
     """
     booking = get_object_or_404(Booking, pk=booking_id)
     if booking.user_id.id != request.user.id:
@@ -128,6 +182,14 @@ def booking_detail(request, booking_id):
 def my_journey_delete(request, journey_id):
     """
     Deletes a flight from a booking (by deleting the connecting journey object)
+    Returns to the all bookings page for the user, as the booking is deleted.
+    
+    **Context**
+    ``journey``
+        The specific :model:`booking.Journey` instance to delete.
+    ``booking``
+        The specific :model:`booking.Booking` instance to delete,
+        which the journey is linked to.
     """
     journey = get_object_or_404(Journey, pk=journey_id)
     booking = get_object_or_404(Booking, pk=journey.booking_id.id)
@@ -154,6 +216,16 @@ def my_journey_delete(request, journey_id):
 def edit_passenger(request, booking_id, passenger_id):
     """
     Edits a passenger's details in a booking
+    Returns to the booking, with the updated passenger details.
+    
+    **Context**
+    ``passenger``
+        The specific :model:`booking.Passenger` instance to edit.
+    ``booking``
+        The specific :model:`booking.Booking` instance to edit,
+        which the passenger is linked
+    ``passenger_form``
+        Form to edit the :model:`booking.Passenger`.
     """
     passenger = get_object_or_404(Passenger, pk=passenger_id)
     booking = get_object_or_404(Booking, pk=booking_id)
@@ -181,6 +253,14 @@ def edit_passenger(request, booking_id, passenger_id):
 def delete_passenger(request, booking_id, passenger_id):
     """
     Deletes a passenger from a booking
+    Returns to the booking, with the passenger removed.
+    
+    **Context**
+    ``passenger``
+        The specific :model:`booking.Passenger` instance to delete.
+    ``booking``
+        The specific :model:`booking.Booking` that the
+        passenger is linked to.
     """
     passenger = get_object_or_404(Passenger, pk=passenger_id)
     booking = get_object_or_404(Booking, pk=booking_id)

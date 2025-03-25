@@ -166,7 +166,6 @@ Notably I took a look at airports directly as well to see how they were displayi
 
 [Bristol Departures](https://www.bristolairport.co.uk/arrivals-and-departures/departures)
 
-[Back to Contents](#Contents)
 
 ### Colour Scheme
 For my colour scheme, I used adobe colour and passed some images through to generate a palatte from the image.
@@ -264,6 +263,8 @@ Clicking (or tapping) this button expands the row and shows the missing informat
 
 If logged in, below the navbar the user is told they are logged in. Otherwise, they are informed to register or login to book a flight.
 
+---
+
 • **Flight Details:** When a user clicks (or taps) onto a flight, they are taken to the flight detail page. Here they can see the arrival information for that flight, (which is not displayed on the departure board) which is important in the decision making process of booking a flight as arrival time can be critical for meetings or opening times for venues at their destination.
 
 Below the flight details is a passenger form. Here they can fill out one passenger and book the flight, they can specify any dietary requirements they have and choose what baggage they would like to bring.
@@ -271,10 +272,14 @@ A user will only see the passenger form if they are logged in.
 
 Once a flight is booked, a message is displayed below the navbar confirming their booking. They can also navigate to the "My Booking" page to add more passengers or make any other changes to their booking.
 
+---
+
 • **My Booking:** This page shows the user their most recent booking first, followed by all their other bookings. Like with the homepage, a user can click (or tap) on the expand button to view the full flight details if they are on mobile or tablet.
 Unlike the homepage we show the full flight information here, as we do with the flight detail page. This is because the homepage is a departure board page and should focus on the required information for a departure.
 
 Clicking (or tapping) on a booking via the "Booking Detail" button, will send the user to a booking passengers page where they can make further changes to their booking, rather than just view their booking.
+
+---
 
 • **Booking Details** Once the user has navigated to this page, they can view all of the passengers they have on a booked flight. They can make edits to that passenger or delete them from the booking. Deleting or editing a passenger gives a message to confirm this below the navbar, as well as resending them to this page so they can confirm the changes themself.
 They can also delete the entire booking. If they do this, the user is redirected to their "My Booking" page, so they can edit or view the details of another booking and again, also confirm that the booking has successfully deleted. A message regardless is also viewable below the navbar that informs the user that the booking was deleted.
@@ -310,10 +315,15 @@ The Kanban board of user stories is split into three columns; Todo, In Progress,
 [GitHub Project Board](https://github.com/users/mogr20/projects/7)
 
 Sprint 1: Database Schema
+
 Sprint 2: Models and Views
+
 Sprint 3: Basic Templates to utilise the views
+
 Sprint 4: UX design and implementation
+
 Sprint 5: Access Control
+
 Sprint 6: Accessibility and finalization
 
 ## MoSCoW Prioritization
@@ -356,12 +366,19 @@ All code was written in Visual Studio as the IDE. GitHub and Git were used for v
 
 # Technologies Used
 **HTML5** - Markup language for the web template structure
+
 **CSS** - Styling language for styling the web templates
+
 **JS** - Web interactivity and DOM manipulation
+
 **Bootstrap** 5.3.3 - Styling and frontend toolkit for rapid design
+
 **Python** 3.12.8 (Django 4.2.20) - Backend web framework, for views, models, and dynamic templates
+
 **PostgreSQL** - Database storage and management, created by django models, and manipulated via django views
+
 **Whitenoise** 5.3.0 - Serves the static files directly from Django
+
 **Heroku**- Online hosting service for the website
 
 [Back to Contents](#Contents)
